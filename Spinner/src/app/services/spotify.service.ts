@@ -14,9 +14,7 @@ export class SpotifyService {
     const url: string = 'https://accounts.spotify.com/api/token';
 
     const body = 'grant_type=client_credentials';
-    let clientId = 'e3f3e661458d4856982d0e6e5f0660b5';
-    let clientSecret = 'd1d27d2dd6c44a92867fa031ce63f905';
-    let encoded = btoa(clientId + ':' + clientSecret);
+    let encoded = 'ZTNmM2U2NjE0NThkNDg1Njk4MmQwZTZlNWYwNjYwYjU6ZDFkMjdkMmRkNmM0NGE5Mjg2N2ZhMDMxY2U2M2Y5MDU=';
 
     const headers = new HttpHeaders({
       Authorization: `Basic ${encoded}`,

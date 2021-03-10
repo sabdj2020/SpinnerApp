@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;spinner&apos; to &apos;spinner-backend&apos;" description="Rename resource &apos;spinner&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/spinner" name="spinner-backend" stamp="1615330058693" updateReferences="true"/>
+</session>

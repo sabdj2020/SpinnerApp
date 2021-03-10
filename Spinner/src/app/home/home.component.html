@@ -1,10 +1,9 @@
-<section class="hero">
-    <div class="hero-body">
-    <div class="container">
-
-      <h1 class="title">Welcome to Spinner!</h1>
-
-    </div>
+<section *ngIf="!loggedInUser">
+    <h1 class="title">Welcome to Spinner!</h1>
+    <div>
+        <app-register></app-register>
     </div>
 </section>
-<app-search></app-search>>
+<section *ngIf="loggedInUser">
+    <app-search></app-search>>
+</section>

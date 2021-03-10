@@ -12,4 +12,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  doClick(): void {
+  
+  }
+
+  toggle(): void {
+    document.getElementById('loginForm').toggleAttribute('hidden');
+    document.getElementById('to-login').toggleAttribute('disabled');
+    document.getElementById('registerForm').toggleAttribute('hidden');
+    document.getElementById('to-register').toggleAttribute('disabled');
+  }
+
 }

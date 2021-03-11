@@ -1,0 +1,19 @@
+<div class="bandPost">
+    <form>
+        <h3>Title:</h3>
+        <input type="text" id="postTitle" name="postTitle" [(ngModel)]="postTitle" placeholder="Please enter a title for your post">
+        <h3>Songs:</h3>
+        <div class="postTrackDiv">
+            <app-search-item [track]="track" *ngFor="let track of postTracks" (click)="removeFromPost(track)"></app-search-item>
+        </div>
+        <button type="button" (click)="createPost">Post</button>
+    </form>
+    <br>
+    <div>
+        <input type="text" id="inputSearch" placeholder="Search for a song"
+            (keyup)="search(searchTerm.value)" (keydown.backspace)="search(searchTerm.value)" #searchTerm>
+    </div>
+    <div *ngIf="searchTracks">
+        <app-search-item [track]="track" *ngFor="let track of searchTracks" (click)="addToPost(track)"></app-search-item>
+    </div>
+</div>

@@ -1,4 +1,14 @@
 .searchResultImg {
-    max-width: 10%;
+    width: 100%;
     height: auto;
+}
+
+.searchItemDiv {
+    display: table-cell;
+    padding: 20px;
+}
+
+.searchItemDivChild {
+    width: 200px;
+    padding: 20px;
 }

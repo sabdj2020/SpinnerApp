@@ -24,46 +24,71 @@ public class Post {
 	private Set<PostComment> comments;
 	private Integer likes;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="band_id")
+	private Band band;
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public LocalDateTime getPostTime() {
 		return postTime;
 	}
+
 	public void setPostTime(LocalDateTime postTime) {
 		this.postTime = postTime;
 	}
+
 	public Set<Music> getSongs() {
 		return songs;
 	}
+
 	public void setSongs(Set<Music> songs) {
 		this.songs = songs;
 	}
+
 	public Set<PostComment> getComments() {
 		return comments;
 	}
+
 	public void setComments(Set<PostComment> comments) {
 		this.comments = comments;
 	}
+
 	public Integer getLikes() {
 		return likes;
 	}
+
 	public void setLikes(Integer likes) {
 		this.likes = likes;
 	}
+
+	public Band getBand() {
+		return band;
+	}
+
+	public void setBand(Band band) {
+		this.band = band;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((band == null) ? 0 : band.hashCode());
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
@@ -72,6 +97,7 @@ public class Post {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,6 +107,11 @@ public class Post {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
+		if (band == null) {
+			if (other.band != null)
+				return false;
+		} else if (!band.equals(other.band))
+			return false;
 		if (comments == null) {
 			if (other.comments != null)
 				return false;
@@ -113,9 +144,14 @@ public class Post {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", title=" + title + ", postTime=" + postTime + ", songs=" + songs + ", comments="
-				+ comments + ", likes=" + likes + "]";
+				+ comments + ", likes=" + likes + ", band=" + band + "]";
 	}
+	
+	
+	
+	
 }

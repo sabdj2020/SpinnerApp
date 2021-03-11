@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { SearchItemComponent } from './search-item/search-item.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
+import { BandPostComponent } from './band-post/band-post.component';
+import { FormsModule } from '@angular/forms';
 import { BandComponent } from './band/band.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,11 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SearchItemComponent,
     SearchComponent,
     RegisterComponent,
+    BandPostComponent
     BandComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule
     NgbModule
   ],
   providers: [],

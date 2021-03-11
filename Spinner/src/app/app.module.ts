@@ -19,13 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SearchItemComponent,
     SearchComponent,
     RegisterComponent,
-    BandPostComponent
+    BandPostComponent,
     BandComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
     NgbModule
   ],
   providers: [],

@@ -11,6 +11,8 @@ public class Band {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	
+	
 	public Integer getId() {
 		return id;
 	}

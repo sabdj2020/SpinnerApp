@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SearchItemComponent } from './search-item/search-item.component';
@@ -13,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { BandComponent } from './band/band.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +20,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SearchItemComponent,
     SearchComponent,
     RegisterComponent,
+<<<<<<< HEAD
     LoginComponent
     BandPostComponent
+=======
+    BandPostComponent,
+>>>>>>> 3ef4b87b672e1cd75c2cc5b47c6dcae80533db6e
     BandComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
     NgbModule
   ],
   providers: [],

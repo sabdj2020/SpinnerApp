@@ -1,5 +1,4 @@
-
-<form>
-    <input type="text" placeholder="name of the Band" id="bandname">
-    <button type="submit" mdbBtn color="secondary" id="bandbutton" (click)="createBand()">create a band</button>
-</form>
+<div>
+<input type="text" [(ngModel)]="name" placeholder="name of the Band" />
+<button type="submit" (click)="createBand()">create a band</button>
+</div>

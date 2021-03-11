@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Track } from '../models/result-model';
 import { SpotifyService } from '../services/spotify.service';
 import { SearchService } from '../services/search.service';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-band-post',
@@ -15,7 +16,7 @@ export class BandPostComponent implements OnInit {
   postTracks: Track[] = [];
   postTitle: string;
 
-  constructor(private spotifyServ: SpotifyService, private searchServ: SearchService) { }
+  constructor(private spotifyServ: SpotifyService, private searchServ: SearchService, private postServ: PostService) { }
 
   ngOnInit(): void {
     this.spotifyServ.getKey().subscribe(
@@ -43,7 +44,7 @@ export class BandPostComponent implements OnInit {
   }
 
   public createPost() {
-    
+    this.postServ.createPost(this.postTracks, this.postTitle);
   }
 
 }

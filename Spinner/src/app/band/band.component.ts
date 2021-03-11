@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient} from '@angular/common/http'
 
 @Component({
   selector: 'app-band',
@@ -7,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BandComponent implements OnInit {
 
-  constructor() { }
+  name:String
+
+  constructor(private http: HttpClient ) { }
 
   ngOnInit(): void {
-  
   }
 
+
   createBand(){
-    let bandName=document.getElementById("bandname");
-    let button = document.getElementById("bandbutton");
+    let url="http://localhost:8080/Spinner/bands/"
+    this.http.post(url,{
+      name:this.name
+    }).toPromise().then((data:any)=>{
+      console.log(data);
+    })
   }
 
 }

@@ -19,7 +19,7 @@ import com.revature.app.services.BandService;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
+//@CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
 @RequestMapping(path="/bands")
 
 public class BandController {
@@ -33,13 +33,22 @@ public class BandController {
 	@PostMapping
 	public ResponseEntity<Band> addBand(@RequestBody Band band) {
 		Integer id = bandServ.addBand(band);
-		return ResponseEntity.created(URI.create("http://localhost:8080/SpinnerBackEnd/bands/" + id)).build();
+		return ResponseEntity.created(URI.create("http://localhost:8080/Spinner/bands/" + id)).build();
 	}
 	
 	@GetMapping(path="/all")
 	public ResponseEntity<Set<Band>> getAllBands() {
-		Set<Band> cats = bandServ.getAllBands();
-		return ResponseEntity.ok(cats);
+		Set<Band> bands = bandServ.getAllBands();
+		return ResponseEntity.ok(bands);
+	}
+	
+	@GetMapping(path="/{id}")
+	public ResponseEntity<Band> getById(@PathVariable("id") Integer id) {
+		Band band = bandServ.getBandById(id);
+		if (band != null) {
+			return ResponseEntity.ok(band);
+		}
+		return ResponseEntity.notFound().build();
 	}
 	
 	@DeleteMapping(path="/{id}")

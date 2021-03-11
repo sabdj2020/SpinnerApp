@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { SearchItemComponent } from './search-item/search-item.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
+import { BandPostComponent } from './band-post/band-post.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     SearchItemComponent,
     SearchComponent,
-    RegisterComponent
+    RegisterComponent,
+    BandPostComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

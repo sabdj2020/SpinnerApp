@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { Track } from '../models/result-model';
 import { Token } from '../models/token';
+import { GetTrackService } from './get-track.service';
 
 @Injectable({
   providedIn: 'root'

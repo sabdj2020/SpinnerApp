@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { SearchItemComponent } from './search-item/search-item.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
+import { BandComponent } from './band/band.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     SearchItemComponent,
     SearchComponent,
-    RegisterComponent
+    RegisterComponent,
+    BandComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

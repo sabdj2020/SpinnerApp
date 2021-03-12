@@ -2,25 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from './models/user.model'
+import { User } from './models/user.model';
+import {UrlService} from '../url.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private urlServ: UrlService) { }
 
-    register(): void {
+    register(): Observable<User> {
         let username = (<HTMLInputElement>document.getElementById('username-reg')).value;
-        let password = (<HTMLInputElement>document.getElementById('username-reg')).value;
+        let password = (<HTMLInputElement>document.getElementById('password-reg')).value;
         let firstName = (<HTMLInputElement>document.getElementById('firstName')).value;
         let lastName = (<HTMLInputElement>document.getElementById('lastName')).value;
+
+        (<HTMLInputElement>document.getElementById('username-reg')).value = '';
+        (<HTMLInputElement>document.getElementById('password-reg')).value = '';
+        (<HTMLInputElement>document.getElementById('firstName')).value = '';
+        (<HTMLInputElement>document.getElementById('lastName')).value = '';
     
         let newUser = new User(username, password, firstName, lastName);
 
-        this.http.post('http://localhost:8080/Spinner/user/register', JSON.stringify(newUser));
-    
+        return this.http.post('http://localhost:8080/Spinner/user/register', newUser).pipe(map(response => response as User));
+
     }
 
 }

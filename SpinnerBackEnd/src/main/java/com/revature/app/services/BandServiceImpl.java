@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.app.beans.Band;
+import com.revature.app.beans.User;
 import com.revature.app.data.BandDAO;
 
 
@@ -48,6 +49,12 @@ public class BandServiceImpl implements BandService {
 		// TODO Auto-generated method stub
 		if (getBandById(band.getId()) != null)
 			bandDao.delete(band);
+		
+	}
+
+	@Override
+	public void joinBand(Band band, User u) {
+		// TODO Auto-generated method stub
 		
 	}
 

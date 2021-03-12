@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import com.revature.app.beans.Band;
 import com.revature.app.beans.User;
 import com.revature.app.data.BandDAO;
+import com.revature.app.data.UserDAO;
 
 
 @Service
 public class BandServiceImpl implements BandService {
 	private BandDAO bandDao;
+	private UserDAO userDao;
 	
 	@Autowired
 	public BandServiceImpl(BandDAO b) {
@@ -40,7 +42,7 @@ public class BandServiceImpl implements BandService {
 	@Override
 	public Band getBandById(Integer id) {
 		// TODO Auto-generated method stub
-		return bandDao.getOne(id);
+		return bandDao.findById(id).get();
 	}
 
 
@@ -55,6 +57,11 @@ public class BandServiceImpl implements BandService {
 	@Override
 	public void joinBand(Band band, User u) {
 		// TODO Auto-generated method stub
+		u = userDao.getOne(u.getId());
+		Set<Band> bands = u.getBands();
+		bands.add(band);
+		u.setBands(bands);
+		userDao.save(u);
 		
 	}
 

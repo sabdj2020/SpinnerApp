@@ -8,10 +8,8 @@ import { UserService } from '../user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  loggedInUser : User;
-  baseUrl : string;
   
-  constructor(private userServ: UserService) { 
+  constructor(public userServ: UserService) { 
     
   }
 

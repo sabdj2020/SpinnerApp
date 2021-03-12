@@ -11,6 +11,7 @@ public class QuestionResponse {
 	@ManyToOne
 	@JoinColumn(name="music_id")
 	private Music song;
+	@Transient
 	private Integer likes;
 	
 	public Integer getId() {

@@ -11,6 +11,7 @@ import { BandPostComponent } from './band-post/band-post.component';
 import { FormsModule } from '@angular/forms';
 import { BandComponent } from './band/band.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 =======
     BandPostComponent,
 >>>>>>> 3ef4b87b672e1cd75c2cc5b47c6dcae80533db6e
-    BandComponent
+    BandComponent,
+FileUploadComponent
   ],
   imports: [
     BrowserModule,

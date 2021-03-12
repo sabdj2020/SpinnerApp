@@ -11,4 +11,6 @@ export class GetBandsService {
   getBands(){
     return this.http.get(this.url)
   }
+
+  
 }

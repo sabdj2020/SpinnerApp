@@ -1,12 +1,12 @@
 package com.revature.app.controllers;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.app.beans.User;
+import com.revature.app.exceptions.UsernameAlreadyTakenException;
 import com.revature.app.services.UserService;
 
 /*
@@ -34,17 +35,22 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	@Transactional
-	public void register(HttpSession session, @RequestBody User user) {
+	public ResponseEntity<User> register(HttpSession session, @RequestBody User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		userServ.addUser(user);
-		login(session, user);
+		try {
+			userServ.addUser(user);
+			User newUser = userServ.getUserById(user.getId());
+			return ResponseEntity.ok(newUser);
+		} catch (UsernameAlreadyTakenException e) {
+			return ResponseEntity.badRequest().build();
+		}
+		
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<User> login(HttpSession session, @RequestBody User user) {
-		String username = user.getUsername();
-		String password = user.getPassword();
+	public ResponseEntity<User> login(HttpSession session, @RequestBody Map<String, String> userMap) {
+		String username = userMap.get("username");
+		String password = userMap.get("password");
 
 		User attemptedLogin = userServ.getUserByUsername(username);
 		if (attemptedLogin != null) {

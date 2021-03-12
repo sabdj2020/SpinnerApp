@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.app.beans.User;
 import com.revature.app.data.UserDAO;
+import com.revature.app.exceptions.UsernameAlreadyTakenException;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -17,8 +18,11 @@ public class UserServiceImp implements UserService {
 	}
 	
 	@Override
-	public void addUser(User t) {
-		userDao.save(t);
+	public void addUser(User t) throws UsernameAlreadyTakenException {
+		try {userDao.save(t);}
+		catch (Exception e) {
+			throw new UsernameAlreadyTakenException();
+		}
 	}
 
 	@Override

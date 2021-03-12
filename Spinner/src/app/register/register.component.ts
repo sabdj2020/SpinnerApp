@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   
-  constructor() { 
+  constructor(private userServ: UserService) { 
   }
 
   ngOnInit(): void {
@@ -15,6 +17,10 @@ export class RegisterComponent implements OnInit {
 
   doClick(): void {
   
+  }
+
+  register(): void {
+    this.userServ.register();
   }
 
   toggle(): void {

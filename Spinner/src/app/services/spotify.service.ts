@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Token } from '../models/token';
@@ -7,10 +8,13 @@ import { Token } from '../models/token';
   providedIn: 'root'
 })
 export class SpotifyService {
+  private token: Token;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    
+  }
 
-  public getKey() {
+  public getKey(): Observable<Token> {
     const url: string = 'https://accounts.spotify.com/api/token';
 
     const body = 'grant_type=client_credentials';
@@ -22,6 +26,23 @@ export class SpotifyService {
     });
 
     return this.http.post(url, body, { headers }).pipe(map(resp => resp as Token));
+  }
+
+  public prepareToken() {
+    this.getKey().subscribe(
+      resp => {
+        this.token = resp;
+      }
+    );
+  }
+
+  public getToken() {
+    if (!this.token) {
+      setTimeout(() => {
+        this.prepareToken();
+      });
+    }
+    return this.token;
   }
 
   public getQuery(query: string, token: Token) {

@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SearchItemComponent } from './search-item/search-item.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
+import { BandPostComponent } from './band-post/band-post.component';
+import { FormsModule } from '@angular/forms';
+import { BandComponent } from './band/band.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { JoinBandComponent } from './join-band/join-band.component';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +20,17 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     SearchItemComponent,
     SearchComponent,
-    RegisterComponent
+    RegisterComponent,
+    BandPostComponent,
+    BandComponent,
+    FileUploadComponent,
+    JoinBandComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

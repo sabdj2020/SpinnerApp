@@ -10,7 +10,7 @@ import { BandPostComponent } from './band-post/band-post.component';
 import { FormsModule } from '@angular/forms';
 import { BandComponent } from './band/band.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { JoinBandComponent } from './join-band/join-band.component';
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     SearchComponent,
     RegisterComponent,
     BandPostComponent,
-    BandComponent
+    BandComponent,
+    JoinBandComponent
   ],
   imports: [
     BrowserModule,

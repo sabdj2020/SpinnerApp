@@ -9,7 +9,8 @@ import {UrlService} from '../url.service';
     providedIn: 'root'
 })
 export class UserService {
-
+    loggedInUser: User;
+    
     constructor(private http: HttpClient, private urlServ: UrlService) { }
 
     register(): Observable<User> {
@@ -25,7 +26,7 @@ export class UserService {
     
         let newUser = new User(username, password, firstName, lastName);
 
-        return this.http.post('http://localhost:8080/Spinner/user/register', newUser).pipe(map(response => response as User));
+        return this.http.post(this.urlServ.baseUrl + '/user/register', newUser).pipe(map(response => response as User));
 
     }
 

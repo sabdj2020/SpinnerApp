@@ -1,0 +1,23 @@
+
+
+<div class="text-center"> 
+    <input class="form-control" type="file" 
+            (change)="onChange($event)"> 
+  
+    <button (click)="onUpload()"  
+        class="btn btn-success">
+        Upload 
+    </button> 
+</div> 
+  
+
+<div class="container text-center jumbotron"
+    *ngIf="imageLink"> 
+    <h2> Visit Here To View Image</h2> 
+    <a href="{{imageLink}}">{{imageLink}}</a> <!--We can make a link here that will send the user to view the uploaded picture-->
+</div> 
+  
+
+<div class="container" *ngIf="loading"> 
+    <h3>Loading ...</h3> 
+</div>  <!--I am changing this to a percentage that will give the user a visualization of their image loading-->

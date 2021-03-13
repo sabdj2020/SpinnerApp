@@ -28,6 +28,10 @@ public class Post {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="band_id")
 	private Band band;
+	
+	public Post() {
+		likes = 0;
+	}
 
 	public Integer getId() {
 		return id;

@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    this.userServ.register();
+    this.userServ.register().subscribe(response => {this.userServ.loggedInUser = response});
   }
 
   toggle(): void {

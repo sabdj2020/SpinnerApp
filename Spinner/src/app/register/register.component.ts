@@ -19,6 +19,10 @@ export class RegisterComponent implements OnInit {
   
   }
 
+  login(): void {
+    this.userServ.login().subscribe(response => {this.userServ.loggedInUser = response});
+  }
+
   register(): void {
     this.userServ.register().subscribe(response => {this.userServ.loggedInUser = response});
   }

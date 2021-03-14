@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
-import {UserService} from '../user.service';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    this.userServ.register().subscribe();
+    this.userServ.register().subscribe(response => {this.userServ.loggedInUser = response});
   }
 
   toggle(): void {

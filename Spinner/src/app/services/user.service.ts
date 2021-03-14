@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from './models/user.model';
-import {UrlService} from '../url.service';
+import { User } from '../models/user.model';
+import {UrlService} from '../../url.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-
+    loggedInUser: User;
+    
     constructor(private http: HttpClient, private urlServ: UrlService) { }
 
     register(): Observable<User> {
@@ -25,7 +26,7 @@ export class UserService {
     
         let newUser = new User(username, password, firstName, lastName);
 
-        return this.http.post('http://localhost:8080/Spinner/user/register', newUser).pipe(map(response => response as User));
+        return this.http.post(this.urlServ.baseUrl + '/user/register', newUser).pipe(map(response => response as User));
 
     }
 

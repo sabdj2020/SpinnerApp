@@ -20,7 +20,7 @@ public class Post {
 		inverseJoinColumns=@JoinColumn(name="music_id"))
 	private Set<Music> songs;
 	@OneToMany
-	@JoinTable(name="post_id")
+	@JoinColumn(name="post_id")
 	private Set<PostComment> comments;
 	private Integer likes;
 	

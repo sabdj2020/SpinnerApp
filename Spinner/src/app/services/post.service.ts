@@ -29,8 +29,9 @@ export class PostService {
     });
     post.songs = postSongs;
     post.band = band;
+    post.postTime = new Date();
     console.log("Right before http post");
-    this.http.post(this.baseUrl, post).subscribe();
+    this.http.post(this.baseUrl, post, {withCredentials: true}).subscribe();
   }
 
   public getBandPosts(bandId: number) {
@@ -44,7 +45,7 @@ export class PostService {
   public getPostsBySong(track: Track) {
     let url = this.baseUrl + '/song/' + track.id;
 
-    return this.http.get(url).pipe(
+    return this.http.get(url, {withCredentials: true}).pipe(
       map(resp => resp as Post[])
     );
   }

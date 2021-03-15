@@ -40,7 +40,6 @@ public class PostController {
 	@PostMapping
 	public ResponseEntity<Post> addPost(HttpSession session, @RequestBody Post post) {
 		User user = (User) session.getAttribute("user");
-		System.out.println(user);
 		Integer id = postServ.addPost(post, user);
 		return ResponseEntity.created(URI.create("http://localhost:8080/Spinner/posts/" + id)).build();
 	}
@@ -62,5 +61,11 @@ public class PostController {
 		Music song = musicServ.getSongBySongKey(key);
 		Set<Post> posts = postServ.getPostsBySong(song);
 		return ResponseEntity.ok(posts);
+	}
+	
+	@GetMapping(path="/user")
+	public void getUser(HttpSession session) {
+		User u = (User) session.getAttribute("user");
+		System.out.println(u);
 	}
 }

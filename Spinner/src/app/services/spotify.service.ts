@@ -8,7 +8,7 @@ import { Token } from '../models/token';
   providedIn: 'root'
 })
 export class SpotifyService {
-  private token: Token;
+  token: Token;
 
   constructor(private http: HttpClient) {
     
@@ -28,20 +28,7 @@ export class SpotifyService {
     return this.http.post(url, body, { headers }).pipe(map(resp => resp as Token));
   }
 
-  public prepareToken() {
-    this.getKey().subscribe(
-      resp => {
-        this.token = resp;
-      }
-    );
-  }
-
   public getToken() {
-    if (!this.token) {
-      setTimeout(() => {
-        this.prepareToken();
-      });
-    }
     return this.token;
   }
 

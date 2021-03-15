@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../models/user.model';
 import { UserService } from '../services/user.service';
+import { SpotifyService } from '../services/spotify.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +10,16 @@ import { UserService } from '../services/user.service';
 })
 export class HomeComponent implements OnInit {
   
-  constructor(public userServ: UserService) { 
+  constructor(public userServ: UserService, public spotifyServ: SpotifyService) { 
     
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spotifyServ.getKey().subscribe(
+      resp => {
+        this.spotifyServ.token = resp;
+      }
+    );
+  }
 
 }

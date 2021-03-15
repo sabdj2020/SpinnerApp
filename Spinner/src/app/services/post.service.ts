@@ -15,19 +15,22 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   public createPost(tracks: Track[], title: string, band: Band) {
+    console.log("create post in post service");
     let post: Post = new Post;
     post.id = 0;
     post.likes = 0;
     post.title = title;
+    let postSongs: Song[] = new Array();
     tracks.forEach(function (track) {
-      let song: Song = new Song();
+      let song: Song = new Song;
       song.id = 0;
       song.songKey = track.id;
-      post.songs.push(song);
+      postSongs.push(song);
     });
+    post.songs = postSongs;
     post.band = band;
-
-    this.http.post(this.baseUrl, post);
+    console.log("Right before http post");
+    this.http.post(this.baseUrl, post).subscribe();
   }
 
   public getBandPosts(bandId: number) {

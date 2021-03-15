@@ -6,7 +6,7 @@
         <div class="postTrackDiv">
             <app-search-item [track]="track" *ngFor="let track of postTracks" (click)="removeFromPost(track)"></app-search-item>
         </div>
-        <button type="button" (click)="createPost">Post</button>
+        <button type="button" (click)="createPost()">Post</button>
     </form>
     <br>
     <div>

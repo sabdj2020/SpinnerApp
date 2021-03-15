@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../models/post';
 import { Track } from '../models/result-model';
 import { Token } from '../models/token';
-import { SpotifyService } from '../services/spotify.service';
 import { GetTrackService } from '../services/get-track.service';
 
 @Component({
@@ -15,16 +14,11 @@ export class PostItemComponent implements OnInit {
   token: Token;
   postTracks: Track[];
 
-  constructor(private spotifyServ: SpotifyService, private getTrackServ: GetTrackService) { }
+  constructor(private getTrackServ: GetTrackService) { }
 
   ngOnInit(): void {
-    this.spotifyServ.getKey().subscribe(
-      resp => {
-        this.token = resp;
-      }
-    );
     this.post.songs.forEach(function(song) {
-      this.getTrackServ.getTrack(song.songKey, this.token).subscribe(
+      this.getTrackServ.getTrack(song.songKey).subscribe(
         resp => {
           this.postTracks.push(resp);
         }

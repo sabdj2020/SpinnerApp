@@ -73,5 +73,15 @@ public class PostServiceImpl implements PostService {
 	public Set<Post> getPostsBySong(Music m) {
 		return postDAO.findBySongsContaining(m);
 	}
+	
+	@Override
+	public Set<Post> getPostsByUser(User u) {
+		// TODO Auto-generated method stub
+		u = userDAO.getOne(u.getId());
+		Set<Post> posts = u.getPosts();
+		return posts;
+	
+	
+	}
 
 }

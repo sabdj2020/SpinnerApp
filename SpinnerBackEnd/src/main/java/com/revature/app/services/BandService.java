@@ -11,6 +11,8 @@ public interface BandService {
 	
 	public Set<Band> getAllBands();
 	public Band getBandById(Integer id);
+	
+	public Set<Band> getBandsByUser(User u);
 
 	public void deleteBand(Band band);
 	

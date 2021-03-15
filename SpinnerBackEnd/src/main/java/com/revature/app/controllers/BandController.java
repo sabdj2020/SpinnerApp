@@ -86,5 +86,15 @@ public class BandController {
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 	}
 	
+	@GetMapping(path="/bands/users")
+	public ResponseEntity<Set<Band>> getBandByUser(HttpSession session) {
+		User loggedUser = (User) session.getAttribute("user");
+		Set<Band> bands = bandServ.getBandsByUser(loggedUser);
+		if (!bands.isEmpty()) {
+			return ResponseEntity.ok(bands);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
 
 }

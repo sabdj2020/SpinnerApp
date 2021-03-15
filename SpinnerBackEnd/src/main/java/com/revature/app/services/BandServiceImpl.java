@@ -19,8 +19,9 @@ public class BandServiceImpl implements BandService {
 	private UserDAO userDao;
 	
 	@Autowired
-	public BandServiceImpl(BandDAO b) {
+	public BandServiceImpl(BandDAO b, UserDAO u) {
 		bandDao = b;
+		userDao = u;
 		
 	}
 
@@ -63,6 +64,16 @@ public class BandServiceImpl implements BandService {
 		u.setBands(bands);
 		userDao.save(u);
 		
+	}
+
+	@Override
+	public Set<Band> getBandsByUser(User u) {
+		// TODO Auto-generated method stub
+		u = userDao.getOne(u.getId());
+		Set<Band> bands = u.getBands();
+		return bands;
+	
+	
 	}
 
 	

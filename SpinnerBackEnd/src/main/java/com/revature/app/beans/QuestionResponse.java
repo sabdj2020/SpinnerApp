@@ -1,5 +1,7 @@
 package com.revature.app.beans;
 
+import java.time.LocalDate;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,17 +10,25 @@ public class QuestionResponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name="question_date")
+	private LocalDate questionDate;
 	@ManyToOne
 	@JoinColumn(name="music_id")
 	private Music song;
 	@Transient
 	private Integer likes;
-	
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public LocalDate getQuestionDate() {
+		return questionDate;
+	}
+	public void setQuestionDate(LocalDate questionDate) {
+		this.questionDate = questionDate;
 	}
 	public Music getSong() {
 		return song;
@@ -38,6 +48,7 @@ public class QuestionResponse {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
+		result = prime * result + ((questionDate == null) ? 0 : questionDate.hashCode());
 		result = prime * result + ((song == null) ? 0 : song.hashCode());
 		return result;
 	}
@@ -60,6 +71,11 @@ public class QuestionResponse {
 				return false;
 		} else if (!likes.equals(other.likes))
 			return false;
+		if (questionDate == null) {
+			if (other.questionDate != null)
+				return false;
+		} else if (!questionDate.equals(other.questionDate))
+			return false;
 		if (song == null) {
 			if (other.song != null)
 				return false;
@@ -69,6 +85,10 @@ public class QuestionResponse {
 	}
 	@Override
 	public String toString() {
-		return "QuestionResponse [id=" + id + ", song=" + song + ", likes=" + likes + "]";
+		return "QuestionResponse [id=" + id + ", questionDate=" + questionDate + ", song=" + song + ", likes=" + likes
+				+ "]";
 	}
+	
+	
+	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.app.beans.Band;
 import com.revature.app.beans.Music;
 import com.revature.app.beans.Post;
 import com.revature.app.beans.User;
@@ -61,5 +62,15 @@ public class PostController {
 		Music song = musicServ.getSongBySongKey(key);
 		Set<Post> posts = postServ.getPostsBySong(song);
 		return ResponseEntity.ok(posts);
+	}
+	
+	@GetMapping(path="/posts/users")
+	public ResponseEntity<Set<Post>> getPostsByUser(HttpSession session) {
+		User loggedUser = (User) session.getAttribute("user");
+		Set<Post> posts = postServ.getPostsByUser(loggedUser);
+		if (!posts.isEmpty()) {
+			return ResponseEntity.ok(posts);
+		}
+		return ResponseEntity.notFound().build();
 	}
 }

@@ -13,4 +13,5 @@ public interface PostService {
 	public Set<Post> getPostsByBand(Band b);
 	public Set<Post> getPostsBySong(Music m);
 	public void deletePost(Post p);
+	public Set<Post> getPostsByUser(User u);
 }

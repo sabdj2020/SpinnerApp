@@ -22,7 +22,6 @@ public class Post {
 	@OneToMany
 	@JoinTable(name="post_id")
 	private Set<PostComment> comments;
-	@Transient
 	private Integer likes;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

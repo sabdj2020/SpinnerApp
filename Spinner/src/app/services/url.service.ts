@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class UrlService {
-    baseUrl: string;
+    readonly baseUrl: string;
 
     constructor(){
         this.baseUrl = 'http://localhost:8080/Spinner';

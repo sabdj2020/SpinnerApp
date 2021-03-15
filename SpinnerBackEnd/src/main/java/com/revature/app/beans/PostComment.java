@@ -14,7 +14,6 @@ public class PostComment {
 	private String comment;
 	@Column(name="comment_time")
 	private LocalDateTime commentTime;
-	@Transient
 	private Integer likes;
 	
 	public Integer getId() {

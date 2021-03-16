@@ -23,7 +23,7 @@ export class JoinBandComponent implements OnInit {
 
   joinBand(b:any){
     let url= this.baseUrl+"/bands/join/"+b.id;
-    this.http.put(url,{}).subscribe((result)=>{
+    this.http.put(url,{withCredentials: true}).subscribe((result)=>{
       console.log(result);
     })
   

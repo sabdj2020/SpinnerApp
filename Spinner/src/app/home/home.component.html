@@ -5,5 +5,19 @@
     </div>
 </section>
 <section *ngIf="this.userServ.loggedInUser">
-    <app-band-snapshot [band]="band" *ngFor="let band of this.userServ.loggedInUser.bands"></app-band-snapshot>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink>Dashboard</a>
+            <ng-template ngbNavContent>
+                <app-band-snapshot [band]="band" *ngFor="let band of this.userServ.loggedInUser.bands"></app-band-snapshot>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <a ngbNavLink>Join Bands</a>
+            <ng-template ngbNavContent>
+                <app-join-band></app-join-band>
+            </ng-template>
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
 </section>

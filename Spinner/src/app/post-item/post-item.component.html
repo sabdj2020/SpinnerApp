@@ -1,5 +1,9 @@
-<div>
-    <h4>{{ post.title }}</h4>
-    <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
-    <p>{{ post.likes }} Likes</p>
-</div>
+<mdb-card>
+    <mdb-card-body>
+        <mdb-card-title>
+            <h4>{{ post.title }}</h4>
+        </mdb-card-title>
+        <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
+        <p>{{ post.likes }} Likes</p>
+    </mdb-card-body>
+</mdb-card>

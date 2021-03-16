@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FileUploadService {
+export class EditUserService {
 
   baseUrl= "ourURL"
   constructor(private http:HttpClient) { }

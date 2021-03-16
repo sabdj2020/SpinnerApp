@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {User} from "../models/user.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
+import { EditUserService } from '../services/edit-user.service'
 
 @Component({
   selector: 'app-edit-user',
@@ -14,9 +15,12 @@ export class EditUserComponent implements OnInit {
 
   user: User;
   editForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
+  imageLink: string = "";
+  loading: boolean = false;
+  file: File = null;
+  constructor(private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     let userId = localStorage.getItem("editUserId");
     if(!userId) {
       alert("Invalid action.")
@@ -25,7 +29,8 @@ export class EditUserComponent implements OnInit {
     }
     this.editForm = this.formBuilder.group({
       id: [],
-      email: ['', Validators.required],
+      username: ['', Validators.required],
+      passwd: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required]
     });
@@ -45,6 +50,23 @@ export class EditUserComponent implements OnInit {
         error => {
           alert(error);
         });
+  }
+
+  onChange(event){
+    this.file = event.target.files[0];
+  }
+
+  onUpload(){
+    this.loading=!this.loading;
+    console.log(this.file);
+    this.editUserService.upload(this.file).subscribe(
+      (event: any) => {
+        if (typeof(event) === 'object'){
+          this.imageLink = event.link;
+          this.loading = false;
+        }
+      }
+    );
   }
 
 }

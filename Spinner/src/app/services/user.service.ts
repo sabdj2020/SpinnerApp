@@ -10,6 +10,7 @@ import {UrlService} from './url.service';
 })
 export class UserService {
     loggedInUser: User;
+    baseUrl: string = 'Our URL';
     
     constructor(private http: HttpClient, private urlServ: UrlService) { }
 
@@ -46,18 +47,18 @@ export class UserService {
         return this.loggedInUser;
     }
     getUserById(id: number) {
-        return this.http.get<User>(this.baseUrl + '/' + id);
-      }
-    
-      createUser(user: User) {
-        return this.http.post(this.baseUrl, user);
-      }
-    
-      updateUser(user: User) {
-        return this.http.put(this.baseUrl + '/' + user.id, user);
-      }
-    
-      deleteUser(id: number) {
-        return this.http.delete(this.baseUrl + '/' + id);
-      }
+    return this.http.get<User>(this.baseUrl + '/' + id);
+    }
+
+    createUser(user: User) {
+    return this.http.post(this.baseUrl, user);
+    }
+
+    updateUser(user: User) {
+    return this.http.put(this.baseUrl + '/' + user.id, user);
+    }
+
+    deleteUser(id: number) {
+    return this.http.delete(this.baseUrl + '/' + id);
+    }
 }

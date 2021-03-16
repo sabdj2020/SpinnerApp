@@ -17,8 +17,6 @@ public interface PostService {
 	public void deletePost(Post p);
 	
 	public Integer addComment(PostComment comment, Post p, User u);
-	public Set<PostComment> getCommentsByUser(User u);
-	public Set<PostComment> getCommentsByPost(Post p);
 	public void updateComment(PostComment comment);
 	public void deleteComment(PostComment comment);
 }

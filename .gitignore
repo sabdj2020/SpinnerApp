@@ -8,3 +8,4 @@ jspm_packages/
 /.metadata/
 application.properties
 
+*.class

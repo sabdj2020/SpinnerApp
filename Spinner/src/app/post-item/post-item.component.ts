@@ -17,16 +17,8 @@ export class PostItemComponent implements OnInit {
   constructor(private getTrackServ: GetTrackService) { }
 
   ngOnInit(): void {
-    // this.post.songs.forEach(function(song) {
-    //   this.getTrackServ.getTrack(song.songKey).subscribe(
-    //     resp => {
-    //       this.postTracks.push(resp);
-    //     }
-    //   )
-    // });
     for (let i = 0; i < this.post.songs.length; i++) {
       let track: Track;
-      console.log(this.post.songs[i].songKey);
       this.getTrackServ.getTrack(this.post.songs[i].songKey).subscribe(
         resp => {
           track = resp;

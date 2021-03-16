@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.app.beans.Band;
 import com.revature.app.beans.Music;
 import com.revature.app.beans.Post;
+import com.revature.app.beans.PostComment;
 import com.revature.app.beans.User;
+import com.revature.app.data.CommentDAO;
 import com.revature.app.data.MusicDAO;
 import com.revature.app.data.PostDAO;
 import com.revature.app.data.UserDAO;
@@ -21,12 +23,14 @@ public class PostServiceImpl implements PostService {
 	private PostDAO postDAO;
 	private UserDAO userDAO;
 	private MusicDAO musicDAO;
+	private CommentDAO commentDAO;
 	
 	@Autowired
-	public PostServiceImpl(PostDAO p, UserDAO u, MusicDAO m) {
+	public PostServiceImpl(PostDAO p, UserDAO u, MusicDAO m, CommentDAO c) {
 		postDAO = p;
 		userDAO = u;
 		musicDAO = m;
+		commentDAO = c;
 	}
 
 	@Override
@@ -74,5 +78,37 @@ public class PostServiceImpl implements PostService {
 	public Set<Post> getPostsBySong(Music m) {
 		return postDAO.findBySongsContaining(m);
 	}
+
+	@Override
+	@Transactional
+	public Integer addComment(PostComment comment, Post p, User u) {
+		p.getComments().add(comment);
+		u.getComments().add(comment);
+		commentDAO.save(comment);
+		postDAO.save(p);
+		userDAO.save(u);
+		return comment.getId();
+	}
+
+	@Override
+	public void updateComment(PostComment comment) {
+		if (comment.getId() != null) {
+			commentDAO.save(comment);
+		} 
+	}
+
+	@Override
+	public void deleteComment(PostComment comment) {
+		commentDAO.delete(comment);
+		
+	}
+
+	@Override
+	public Post getPostById(int id) {
+		return postDAO.getOne(id);
+	}
+
+	
+	
 
 }

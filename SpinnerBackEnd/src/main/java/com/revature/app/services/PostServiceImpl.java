@@ -91,16 +91,6 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Set<PostComment> getCommentsByUser(User u) {
-		return commentDAO.findByUser(u);
-	}
-
-	@Override
-	public Set<PostComment> getCommentsByPost(Post p) {
-		return commentDAO.findByPost(p);
-	}
-
-	@Override
 	public void updateComment(PostComment comment) {
 		if (comment.getId() != null) {
 			commentDAO.save(comment);

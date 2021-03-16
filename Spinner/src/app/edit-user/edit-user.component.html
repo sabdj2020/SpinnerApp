@@ -1,0 +1,47 @@
+
+<div class="text-center"> 
+  <h2> Upload Your Profile Picture Below</h2> 
+  <input class="form-control" type="file" 
+          (change)="onChange($event)"> 
+
+  <button (click)="onUpload()"  
+      class="btn btn-success">
+      Upload 
+  </button> 
+</div>   
+
+<div class="container text-center jumbotron"
+  *ngIf="imageLink">   
+  <a href="{{imageLink}}">{{imageLink}}</a> <!--We can make a link here that will send the user to view the uploaded picture-->
+</div> 
+
+<div class="container" *ngIf="loading"> 
+  <h3>Loading ...</h3> 
+</div>  <!--I am changing this to a percentage that will give the user a visualization of their image loading-->
+
+<div class="col-md-6">
+  <h2 class="text-center">Edit User Information</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">    
+    <div class="form-group">
+      <label for="username">Username: </label>
+      <input formControlName="username" placeholder="Username" name="username class="form-control" id="username"/><br>
+    </div>
+
+    <div class="form-group">
+      <label for="passwd">Password: </label>
+      <input formControlName="passwd" placeholder="Password" name="passwd" class="form-control" id="passwd"/><br>      
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name: </label>
+      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName"/><br>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name: </label>
+      <input formControlName="lastName" placeholder="Last Name" name="lastName" class="form-control" id="lastName"/><br>
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="update()">Update</button>
+  </form>
+</div>

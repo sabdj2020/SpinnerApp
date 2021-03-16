@@ -10,6 +10,7 @@ import {UrlService} from './url.service';
 })
 export class UserService {
     loggedInUser: User;
+    baseUrl: string = 'Our URL';
     
     constructor(private http: HttpClient, private urlServ: UrlService) { }
 
@@ -45,5 +46,12 @@ export class UserService {
     getUser() {
         return this.loggedInUser;
     }
+    
+    getUserById(id: number) {
+    return this.http.get<User>(this.baseUrl + '/' + id);
+    }
 
+    updateUser(user: User) {
+    return this.http.put(this.baseUrl + '/' + user.id, user);
+    }
 }

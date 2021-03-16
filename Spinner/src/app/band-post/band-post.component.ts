@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Track } from '../models/result-model';
 import { SearchService } from '../services/search.service';
 import { PostService } from '../services/post.service';
@@ -14,6 +14,7 @@ export class BandPostComponent implements OnInit {
   postTracks: Track[] = [];
   postTitle: string;
   @Input() band: Band;
+  @Output() closePost = new EventEmitter();
 
   constructor(private searchServ: SearchService, private postServ: PostService) { }
 
@@ -53,6 +54,7 @@ export class BandPostComponent implements OnInit {
     this.band.id = 10;
     this.band.name = "my band";
     this.postServ.createPost(this.postTracks, this.postTitle, this.band);
+    this.closePost.emit();
   }
 
 }

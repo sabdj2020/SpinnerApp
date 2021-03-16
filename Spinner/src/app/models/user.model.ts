@@ -1,10 +1,12 @@
 import {Deserializable} from "./deserializable.model";
+import { Band } from "../models/band";
 export class User implements Deserializable {
     id: number;
     username: string;
     password: string;
     firstName: string;
     lastName: string;
+    bands: Band[];
 
     constructor(username: string, password: string, firstName: string, lastName: string) {
         this.id = null;

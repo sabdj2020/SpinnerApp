@@ -33,9 +33,10 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 	public Integer addPost(Post p, User u) {
 		Set<Music> songs = p.getSongs();
+		System.out.println(songs);
 		Set<Music> addedSongs = new HashSet<>();
 		for (Music s : songs) {
-			if (musicDAO.findBySongKey(s.getSongKey()) != null) {
+			if (musicDAO.findBySongKey(s.getSongKey()) == null) {
 				addedSongs.add(musicDAO.save(s));
 			} else {
 				addedSongs.add(musicDAO.findBySongKey(s.getSongKey()));

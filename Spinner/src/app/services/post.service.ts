@@ -15,7 +15,6 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   public createPost(tracks: Track[], title: string, band: Band) {
-    console.log("create post in post service");
     let post: Post = new Post;
     post.id = 0;
     post.likes = 0;
@@ -30,14 +29,13 @@ export class PostService {
     post.songs = postSongs;
     post.band = band;
     post.postTime = new Date();
-    console.log("Right before http post");
     this.http.post(this.baseUrl, post, {withCredentials: true}).subscribe();
   }
 
   public getBandPosts(bandId: number) {
     let url = this.baseUrl + '/band/' + bandId;
 
-    return this.http.get(url).pipe(
+    return this.http.get(url, {withCredentials: true}).pipe(
       map(resp => resp as Post[])
     );
   }

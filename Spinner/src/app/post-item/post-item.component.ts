@@ -12,18 +12,28 @@ import { GetTrackService } from '../services/get-track.service';
 export class PostItemComponent implements OnInit {
   @Input() post: Post;
   token: Token;
-  postTracks: Track[];
+  postTracks: Track[] = new Array();
 
   constructor(private getTrackServ: GetTrackService) { }
 
   ngOnInit(): void {
-    this.post.songs.forEach(function(song) {
-      this.getTrackServ.getTrack(song.songKey).subscribe(
+    // this.post.songs.forEach(function(song) {
+    //   this.getTrackServ.getTrack(song.songKey).subscribe(
+    //     resp => {
+    //       this.postTracks.push(resp);
+    //     }
+    //   )
+    // });
+    for (let i = 0; i < this.post.songs.length; i++) {
+      let track: Track;
+      console.log(this.post.songs[i].songKey);
+      this.getTrackServ.getTrack(this.post.songs[i].songKey).subscribe(
         resp => {
-          this.postTracks.push(resp);
+          track = resp;
+          this.postTracks.push(track);
         }
-      )
-    });
+      );
+    }
   }
 
 }

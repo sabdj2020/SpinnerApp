@@ -10,6 +10,7 @@ import com.revature.app.beans.User;
 
 public interface PostService {
 	public Integer addPost(Post p, User u);
+	public Post getPostById(int id);
 	public Set<Post> getAllPosts();
 	public Set<Post> getPostsByBand(Band b);
 	public Set<Post> getPostsBySong(Music m);

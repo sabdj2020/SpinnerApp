@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,7 +68,30 @@ public class PostController {
 	
 	@GetMapping(path="/comment/{postId}")
 	public ResponseEntity<Set<PostComment>> getCommentsByPostId(@PathVariable("postId") int postId) {
-		Set<Post> posts = postServ.getAllPosts();
-		return null;
+		Post post = postServ.getPostById(postId);
+		if (post == null) return ResponseEntity.notFound().build();
+		return ResponseEntity.ok(post.getComments());
+	}
+	
+	@PostMapping(path="/comment/{postId}")
+	public ResponseEntity<PostComment> addCommentToPost(HttpSession session, 
+														@PathVariable("postId") int postId, 
+														@RequestBody PostComment comment) {
+		
+		Post post = postServ.getPostById(postId);
+		User user = (User) session.getAttribute("user");
+		postServ.addComment(comment, post, user);
+		return ResponseEntity.ok(comment);
+	}
+	
+	@PutMapping(path="/comment")
+	public ResponseEntity<PostComment> updateComment(@RequestBody PostComment comment) {
+		postServ.updateComment(comment);
+		return ResponseEntity.ok(comment);
+	}
+	
+	@DeleteMapping(path="/comment")
+	public void deleteComment(@RequestBody PostComment comment) {
+		postServ.deleteComment(comment);
 	}
 }

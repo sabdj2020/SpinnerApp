@@ -112,6 +112,12 @@ public class PostServiceImpl implements PostService {
 		commentDAO.delete(comment);
 		
 	}
+
+	@Override
+	public Post getPostById(int id) {
+		return postDAO.getOne(id);
+	}
+
 	
 	
 

@@ -14,7 +14,11 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { JoinBandComponent } from './join-band/join-band.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
+<<<<<<< HEAD
 import { UserProfileComponent } from './user-profile/user-profile.component';
+=======
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+>>>>>>> 385edce5d920a7e8675c5ef7184e222a46d9a3d4
 
 
 @NgModule({
@@ -36,7 +40,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

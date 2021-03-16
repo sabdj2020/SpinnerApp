@@ -3,6 +3,7 @@ import { Track } from '../models/result-model';
 import { SearchService } from '../services/search.service';
 import { PostService } from '../services/post.service';
 import { Band } from '../models/band';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-band-post',
@@ -16,7 +17,7 @@ export class BandPostComponent implements OnInit {
   @Input() band: Band;
   @Output() closePost = new EventEmitter();
 
-  constructor(private searchServ: SearchService, private postServ: PostService) { }
+  constructor(private searchServ: SearchService, private postServ: PostService, private modalServ: NgbModal) { }
 
   ngOnInit(): void {}
 
@@ -55,6 +56,10 @@ export class BandPostComponent implements OnInit {
     this.band.name = "my band";
     this.postServ.createPost(this.postTracks, this.postTitle, this.band);
     this.closePost.emit();
+  }
+
+  openModal(content) {
+    this.modalServ.open(content, { centered: true, size: 'lg' });
   }
 
 }

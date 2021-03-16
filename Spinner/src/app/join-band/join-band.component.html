@@ -1,6 +1,9 @@
+<mdb-card style="width:80%; margin:0 auto" *ngFor="let d of data">
+    <mdb-card-body>
+        <mdb-card-title>
+            <h4>{{d.name}}</h4>
+        </mdb-card-title>
 
-<div *ngFor ="let d of data">
-    {{d.name}}
-    <button (click)="joinBand(d)">join the group</button>
-
-</div>
+        <button (click)="joinBand(d)">join the group</button>
+    </mdb-card-body>
+</mdb-card>

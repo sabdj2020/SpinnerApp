@@ -1,15 +1,23 @@
 package com.revature.app.controllers;
 
+import java.net.URI;
 import java.time.LocalDate;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.app.beans.DailyQuestion;
+import com.revature.app.beans.Post;
+import com.revature.app.beans.QuestionResponse;
+import com.revature.app.beans.User;
 import com.revature.app.services.DailyQuestionService;
 
 @RestController
@@ -25,7 +33,14 @@ public class DailyQuestionController {
 		this.dqServ = dq;
 	}
 	
-	@GetMapping(path="/day")
+	@PostMapping
+	public ResponseEntity<Post> addAnswer(HttpSession session, @RequestBody QuestionResponse qr) {
+		User user = (User) session.getAttribute("user");
+		Integer id = dqServ.addAnswer(qr, user);
+		return ResponseEntity.created(URI.create("http://localhost:8080/Spinner/reponse/" + id)).build();
+	}
+	
+	@GetMapping()
 	public ResponseEntity<DailyQuestion> getByDay() {
 		DailyQuestion dQuestion = dqServ.getDailyQuestionById(LocalDate.now().getDayOfMonth());
 		if (dQuestion != null) {

@@ -10,21 +10,14 @@ import { SearchService } from '../services/search.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  token: Token;
   tracks: Track[] = [];
 
   constructor(private spotifyServ: SpotifyService, private searchServ: SearchService) { }
 
-  ngOnInit(): void {
-    this.spotifyServ.getKey().subscribe(
-      resp => {
-        this.token = resp;
-      }
-    );
-  }
+  ngOnInit(): void {}
 
   public search(term: string): void {
-    this.searchServ.getSearchResult(term, this.token).subscribe((data: any) => {
+    this.searchServ.getSearchResult(term).subscribe((data: any) => {
       this.tracks = data.tracks.items;
     }, (err) => {
       console.error(err.message);

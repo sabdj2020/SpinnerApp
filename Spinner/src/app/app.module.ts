@@ -13,6 +13,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { JoinBandComponent } from './join-band/join-band.component';
 import { PostItemComponent } from './post-item/post-item.component';
+import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -26,13 +28,15 @@ import { PostItemComponent } from './post-item/post-item.component';
     BandComponent,
     FileUploadComponent,
     JoinBandComponent,
-    PostItemComponent
+    PostItemComponent,
+    BandSnapshotComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

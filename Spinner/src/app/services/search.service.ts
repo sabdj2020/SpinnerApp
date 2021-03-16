@@ -13,8 +13,9 @@ export class SearchService {
 
   constructor(private spotifyServ: SpotifyService) { }
 
-  public getSearchResult(term: string, token: Token): Observable<Track[]> {
+  public getSearchResult(term: string): Observable<Track[]> {
     const searchUrl: string = `search?q=${term}&type=track&limit=10`;
+    let token: Token = this.spotifyServ.getToken();
 
     return this.spotifyServ.getQuery(searchUrl, token).pipe(
       map(resp => resp as Track[])

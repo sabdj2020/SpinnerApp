@@ -12,8 +12,9 @@ export class GetTrackService {
 
   constructor(private spotifyServ: SpotifyService) { }
 
-  public getTrack(trackId: string, token: Token): Observable<Track> {
+  public getTrack(trackId: string): Observable<Track> {
     const getUrl: string = `tracks/${trackId}`;
+    let token: Token = this.spotifyServ.getToken();
 
     return this.spotifyServ.getQuery(getUrl, token).pipe(
       map(resp => resp as Track)

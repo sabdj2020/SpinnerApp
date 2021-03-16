@@ -22,7 +22,7 @@ export class UserService {
 
         let loggingUser = new User(username, password, null, null);
 
-        return this.http.post(this.urlServ.baseUrl + '/user/login', loggingUser).pipe(map(response => response as User));
+        return this.http.post(this.urlServ.baseUrl + '/user/login', loggingUser, {withCredentials: true}).pipe(map(response => response as User));
     }
 
     register(): Observable<User> {
@@ -38,8 +38,12 @@ export class UserService {
     
         let newUser = new User(username, password, firstName, lastName);
 
-        return this.http.post(this.urlServ.baseUrl + '/user/register', newUser).pipe(map(response => response as User));
+        return this.http.post(this.urlServ.baseUrl + '/user/register', newUser, {withCredentials: true}).pipe(map(response => response as User));
 
+    }
+
+    getUser() {
+        return this.loggedInUser;
     }
 
 }

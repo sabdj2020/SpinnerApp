@@ -67,5 +67,6 @@ public class PostController {
 	@GetMapping(path="/comment/{postId}")
 	public ResponseEntity<Set<PostComment>> getCommentsByPostId(@PathVariable("postId") int postId) {
 		Set<Post> posts = postServ.getAllPosts();
+		return null;
 	}
 }

@@ -14,6 +14,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { JoinBandComponent } from './join-band/join-band.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
     FileUploadComponent,
     JoinBandComponent,
     PostItemComponent,
-    BandSnapshotComponent
+    BandSnapshotComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

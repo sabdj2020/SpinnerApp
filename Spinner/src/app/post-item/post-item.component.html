@@ -3,7 +3,9 @@
         <mdb-card-title>
             <h4>{{ post.title }}</h4>
         </mdb-card-title>
-        <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
+        <div class="card-deck">
+            <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
+        </div><br>
         <p>{{ post.likes }} Likes</p>
     </mdb-card-body>
 </mdb-card>

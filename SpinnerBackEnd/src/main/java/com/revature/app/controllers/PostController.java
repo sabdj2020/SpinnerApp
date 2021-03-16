@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.app.beans.Music;
 import com.revature.app.beans.Post;
+import com.revature.app.beans.PostComment;
 import com.revature.app.beans.User;
 import com.revature.app.services.BandService;
 import com.revature.app.services.MusicService;
@@ -61,5 +62,10 @@ public class PostController {
 		Music song = musicServ.getSongBySongKey(key);
 		Set<Post> posts = postServ.getPostsBySong(song);
 		return ResponseEntity.ok(posts);
+	}
+	
+	@GetMapping(path="/comment/{postId}")
+	public ResponseEntity<Set<PostComment>> getCommentsByPostId(@PathVariable("postId") int postId) {
+		Set<Post> posts = postServ.getAllPosts();
 	}
 }

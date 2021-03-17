@@ -8,5 +8,17 @@
             <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
         </div><br>
         <p>{{ post.likes }} Likes</p>
+        <div class="comment-box">
+            <table class="comment-table">
+                <tr>
+                    <th>Comments</th>
+                </tr>
+                <tr *ngFor="let comment of this.post.comments">
+                    {{ comment.comment }}   {{ comment.likes }}
+                </tr>
+            </table>
+            <input class="comment-input" type="text" placeholder="Comment here...">
+            <button type="button"></button>
+        </div>
     </mdb-card-body>
 </mdb-card>

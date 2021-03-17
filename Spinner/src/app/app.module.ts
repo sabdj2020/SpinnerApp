@@ -16,6 +16,7 @@ import { PostItemComponent } from './post-item/post-item.component';
 import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DailyQuestionComponent } from './daily-question/daily-question.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DailyQuestionComponent } from './daily-question/daily-question.componen
     JoinBandComponent,
     PostItemComponent,
     BandSnapshotComponent,
-    DailyQuestionComponent
+    DailyQuestionComponent,
+    CommentBoxComponent
   ],
   imports: [
     BrowserModule,

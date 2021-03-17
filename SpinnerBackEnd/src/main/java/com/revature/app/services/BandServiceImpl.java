@@ -19,8 +19,9 @@ public class BandServiceImpl implements BandService {
 	private UserDAO userDao;
 	
 	@Autowired
-	public BandServiceImpl(BandDAO b) {
+	public BandServiceImpl(BandDAO b, UserDAO u) {
 		bandDao = b;
+		userDao = u;
 		
 	}
 

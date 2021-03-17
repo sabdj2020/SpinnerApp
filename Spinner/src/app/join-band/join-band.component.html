@@ -1,9 +1,41 @@
-<mdb-card style="width:80%; margin:0 auto" *ngFor="let d of data">
+<mdb-card style="width:80%; margin:0 auto; background-color:#aa00ff" *ngFor="let d of data">
     <mdb-card-body>
         <mdb-card-title>
             <h4>{{d.name}}</h4>
         </mdb-card-title>
 
-        <button (click)="joinBand(d)">join the group</button>
+        <button type="button" class="btn btn-dark" (click)="joinBand(d)" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+         mdbWavesEffect>Join the Band</button>
+
+     <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+     <div class="modal-dialog modal-notify modal-success" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead"> Success</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <mdb-icon fas icon="check" size="4x" class="mb-3 animated rotateIn"></mdb-icon>
+          <p>Congrads, you just joined the group {{d.name}} </p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="success" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()">ok</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
     </mdb-card-body>
 </mdb-card>

@@ -11,7 +11,7 @@ import { SpotifyService } from '../services/spotify.service';
 export class HomeComponent implements OnInit {
   
   constructor(public userServ: UserService, public spotifyServ: SpotifyService) { 
-    
+
   }
 
   ngOnInit(): void {
@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
         this.spotifyServ.token = resp;
       }
     );
+
+    this.userServ.getLoggedInUser();
   }
 
 }

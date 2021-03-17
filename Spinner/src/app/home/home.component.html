@@ -26,6 +26,9 @@
                 <app-join-band></app-join-band>
             </ng-template>
         </li>
+        <li [ngbNavItem]="3">
+            <button id="logout-button" type="button" (click)="this.userServ.logout()">Logout</button>
+        </li>
     </ul>
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
 </section>

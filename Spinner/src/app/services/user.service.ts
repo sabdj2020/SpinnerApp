@@ -45,6 +45,10 @@ export class UserService {
 
     }
 
+    getLoggedInUser(): void {
+        this.http.get(this.baseUrl, {withCredentials: true}).pipe(map(response => response as User)).subscribe(response => {this.loggedInUser = response});
+    }
+
     logout() {
         this.http.delete(this.baseUrl + '/login');
         this.loggedInUser = null;

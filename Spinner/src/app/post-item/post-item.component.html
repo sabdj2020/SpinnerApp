@@ -17,8 +17,8 @@
                     {{ comment.comment }}   {{ comment.likes }}
                 </tr>
             </table>
-            <input class="comment-input" type="text" placeholder="Comment here...">
-            <button type="button"></button>
+            <input id="new-comment" class="comment-input" type="text" placeholder="Comment here...">
+            <button type="button" (click)="addComment()"></button>
         </div>
     </mdb-card-body>
 </mdb-card>

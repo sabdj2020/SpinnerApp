@@ -2,6 +2,7 @@
     <mdb-card-body>
         <mdb-card-title>
             <h4>{{ post.title }}</h4>
+            <p>Posted: {{ post.postTime }}</p>
         </mdb-card-title>
         <div class="card-deck">
             <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>

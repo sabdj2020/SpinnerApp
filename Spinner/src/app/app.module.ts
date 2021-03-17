@@ -10,7 +10,7 @@ import { BandPostComponent } from './band-post/band-post.component';
 import { FormsModule } from '@angular/forms';
 import { BandComponent } from './band/band.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+//import { FileUploadComponent } from './file-upload/file-upload.component';
 import { JoinBandComponent } from './join-band/join-band.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
@@ -27,7 +27,7 @@ import { DailyQuestionComponent } from './daily-question/daily-question.componen
     RegisterComponent,
     BandPostComponent,
     BandComponent,
-    FileUploadComponent,
+    //FileUploadComponent,
     JoinBandComponent,
     PostItemComponent,
     BandSnapshotComponent,

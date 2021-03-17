@@ -10,13 +10,13 @@ import { BandPostComponent } from './band-post/band-post.component';
 import { FormsModule } from '@angular/forms';
 import { BandComponent } from './band/band.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { FileUploadComponent } from './file-upload/file-upload.component';
 import { JoinBandComponent } from './join-band/join-band.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { BandSnapshotComponent } from './band-snapshot/band-snapshot.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DailyQuestionComponent } from './daily-question/daily-question.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
+import { ResponseItemComponent } from './response-item/response-item.component';
 
 
 @NgModule({
@@ -28,12 +28,12 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
     RegisterComponent,
     BandPostComponent,
     BandComponent,
-    //FileUploadComponent,
     JoinBandComponent,
     PostItemComponent,
     BandSnapshotComponent,
     DailyQuestionComponent,
     CommentBoxComponent
+    ResponseItemComponent
   ],
   imports: [
     BrowserModule,

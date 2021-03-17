@@ -34,10 +34,10 @@ public class DailyQuestionController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Post> addAnswer(HttpSession session, @RequestBody QuestionResponse qr) {
+	public ResponseEntity<QuestionResponse> addAnswer(HttpSession session, @RequestBody QuestionResponse qr) {
 		User user = (User) session.getAttribute("user");
-		Integer id = dqServ.addAnswer(qr, user);
-		return ResponseEntity.created(URI.create("http://localhost:8080/Spinner/reponse/" + id)).build();
+		qr = dqServ.addAnswer(qr, user);
+		return ResponseEntity.ok(qr);
 	}
 	
 	@GetMapping()

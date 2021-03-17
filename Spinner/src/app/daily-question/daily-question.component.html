@@ -1,15 +1,44 @@
-<button (click)="dailyQuestion()">Daily Question</button>
+<mdb-card style="width:80%; margin:0 auto">
+    <mdb-card-body>
+        <h2 class="card-title" style="color:#aa00ff;"><strong>Question Of The Day</strong></h2><hr>
+        <h3>{{ questionOtd.question }}</h3><hr>
+        <h4>Top Answers:</h4>
+        <div>
+            <app-response-item [response]="response" *ngFor="let response of questionOtd.responses"></app-response-item>
+        </div>
+        <button type="button" class="btn btn-dark" (click)="openModal(newResponse)">
+            Add a Response
+        </button>
+    </mdb-card-body>    
+</mdb-card>
 
-<div>{{dataQuestion.question}}</div>
-<h1>answer</h1>
-<div *ngFor ="let d of dataAnswers">
-    {{d.questionDate}}
-</div>
-
-
-<div id="inputAnswer">
-    
-</div>
+<ng-template #newResponse let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Respond to the Question of the Day</h4>
+        <button type="button" class="close" (click)="modal.close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <h5>Song:</h5>
+            <div class="card-deck">
+                <app-search-item [track]="responseTrack"></app-search-item>
+            </div>
+        </form>
+        <br>
+        <div>
+            <input type="text" id="inputSearch" placeholder="Search for a song"
+                (keyup)="search(searchTerm.value)" (keydown.backspace)="search(searchTerm.value)" #searchTerm>
+        </div>
+        <div *ngIf="searchTracks" class="card-deck">
+            <app-search-item [track]="track" *ngFor="let track of searchTracks" (click)="addToResponse(track)"></app-search-item>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="createAnswer()">Post</button>
+    </div>
+</ng-template>
 
 
 

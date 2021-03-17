@@ -10,9 +10,11 @@ import {UrlService} from './url.service';
 })
 export class UserService {
     loggedInUser: User;
-    baseUrl: string = 'Our URL';
+    baseUrl: string;
     
-    constructor(private http: HttpClient, private urlServ: UrlService) { }
+    constructor(private http: HttpClient, private urlServ: UrlService) { 
+        this.baseUrl = this.urlServ.baseUrl + '/user';
+    }
 
     login(): Observable<User> {
         let username = (<HTMLInputElement>document.getElementById('username-login')).value;
@@ -41,6 +43,11 @@ export class UserService {
 
         return this.http.post(this.urlServ.baseUrl + '/user/register', newUser, {withCredentials: true}).pipe(map(response => response as User));
 
+    }
+
+    logout() {
+        this.http.delete(this.baseUrl + '/login');
+        this.loggedInUser = null;
     }
 
     getUser() {

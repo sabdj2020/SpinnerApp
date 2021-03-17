@@ -9,7 +9,14 @@
         <li [ngbNavItem]="1">
             <a ngbNavLink>Dashboard</a>
             <ng-template ngbNavContent>
-                <app-band-snapshot [band]="band" *ngFor="let band of this.userServ.loggedInUser.bands"></app-band-snapshot>
+                <div class="row">
+                    <div class="col-4">
+                        <app-daily-question></app-daily-question>
+                    </div>
+                    <div class="col-8">
+                        <app-band-snapshot [band]="band" *ngFor="let band of this.userServ.loggedInUser.bands"></app-band-snapshot>
+                    </div>
+                </div>
             </ng-template>
         </li>
         <li [ngbNavItem]="2">

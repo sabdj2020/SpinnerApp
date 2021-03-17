@@ -27,14 +27,16 @@ private UserDAO userDao;
 
 	
 	@Autowired
-	public DailyQuestionServiceImpl(DailyQuestionDAO dqd) {
+	public DailyQuestionServiceImpl(DailyQuestionDAO dqd, MusicDAO md, QuestionResponseDAO qd, UserDAO ud) {
 		dqDao = dqd;
-		
+		musicDao = md;
+		qrDao = qd;
+		userDao = ud;
 	}
 	
 	@Override
 	@Transactional
-	public Integer addAnswer(QuestionResponse qr, User u) {
+	public QuestionResponse addAnswer(QuestionResponse qr, User u) {
 		Music songs = qr.getSong();
 		System.out.println(songs);
 			if (musicDao.findBySongKey(songs.getSongKey()) == null) {
@@ -43,12 +45,17 @@ private UserDAO userDao;
 				qr.setSong(musicDao.findBySongKey(songs.getSongKey()));
 			}
 		qr = qrDao.save(qr);
+		DailyQuestion dq = getDailyQuestionById(qr.getQuestionDate().getDayOfMonth());
+		Set<QuestionResponse> dqResponses = dq.getResponses();
+		dqResponses.add(qr);
+		dq.setResponses(dqResponses);
+		dqDao.save(dq);
 		u = userDao.getOne(u.getId());
 		Set<QuestionResponse> userQuestionResp = u.getQotdResponses();
 		userQuestionResp.add(qr);
 		u.setQotdResponses(userQuestionResp);
 		userDao.save(u);
-		return qr.getId();
+		return qr;
 	}
 
 

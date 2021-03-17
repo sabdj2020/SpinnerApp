@@ -5,14 +5,18 @@ import { Song } from '../models/song';
 import { Band } from '../models/band';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { UrlService } from '../services/url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  baseUrl: string = 'http://localhost:8080/Spinner/posts';
+  //baseUrl: string = 'http://localhost:8080/Spinner/posts';
+  baseUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private urlServ: UrlService) { 
+    this.baseUrl = this.urlServ.baseUrl + '/posts';
+  }
 
   public createPost(tracks: Track[], title: string, band: Band) {
     let post: Post = new Post;

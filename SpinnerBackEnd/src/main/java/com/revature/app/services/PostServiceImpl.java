@@ -108,7 +108,49 @@ public class PostServiceImpl implements PostService {
 		return postDAO.getOne(id);
 	}
 
+	@Override
+	public Post addLike(Post p, User u) {
+		// TODO Auto-generated method stub
+		
+		int numLikes = p.getLikes();
+		numLikes = numLikes+1;
+		p.setLikes(numLikes);
+		
+		u = userDAO.getOne(u.getId());
+		Set<Post> likedPosts = u.getLikedPosts();
+		
+		likedPosts.add(p);
+		u.setLikedPosts(likedPosts);
+		userDAO.save(u);
+		postDAO.save(p);
+		return p;
+	}
 	
+	@Override
+	public PostComment getPostCommentById(int id) {
+		return commentDAO.getOne(id);
+	}
+
+	@Override
+	public PostComment addPostCommentLike(PostComment pc, User u) {
+		// TODO Auto-generated method stub
+		
+		int numLikes = pc.getLikes();
+		numLikes = numLikes+1;
+		pc.setLikes(numLikes);
+		
+		u = userDAO.getOne(u.getId());
+		Set<PostComment> likedcomment = u.getLikedComments();
+		likedcomment.add(pc);
+		u.setLikedComments(likedcomment);;
+		userDAO.save(u);
+		commentDAO.save(pc);
+		return pc;	}
+
+	
+
+	
+
 	
 
 }

@@ -15,7 +15,6 @@ import { PostComment } from '../models/post-comment';
 })
 export class PostItemComponent implements OnInit {
   @Input() post: Post;
-  @Input() postComment: PostComment;
   token: Token;
   postTracks: Track[] = new Array();
   data:any;

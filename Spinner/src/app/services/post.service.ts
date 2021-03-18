@@ -11,7 +11,6 @@ import { UrlService } from '../services/url.service';
   providedIn: 'root'
 })
 export class PostService {
-  //baseUrl: string = 'http://localhost:8080/Spinner/posts';
   baseUrl: string;
 
   constructor(private http: HttpClient, private urlServ: UrlService) { 

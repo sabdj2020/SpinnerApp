@@ -8,7 +8,8 @@ import { HttpClient} from '@angular/common/http';
 })
 export class BandComponent implements OnInit {
   baseUrl: string = 'http://localhost:8080/Spinner';
-  name:String
+  name:String;
+  band:any;
 
   constructor(private http: HttpClient ) { }
 
@@ -19,6 +20,7 @@ export class BandComponent implements OnInit {
     this.http.post(url,{
       name:this.name
     }).subscribe((result)=>{
+      this.band.push(result)
       console.log(result);
     })
   }

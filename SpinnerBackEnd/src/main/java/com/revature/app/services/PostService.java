@@ -19,4 +19,9 @@ public interface PostService {
 	public Integer addComment(PostComment comment, Post p, User u);
 	public void updateComment(PostComment comment);
 	public void deleteComment(PostComment comment);
+	
+	public Post addLike(Post p, User u);
+	public PostComment getPostCommentById(int id);
+	public PostComment addPostCommentLike(PostComment postComment, User u);
+
 }

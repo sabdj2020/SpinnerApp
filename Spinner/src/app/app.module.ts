@@ -32,7 +32,7 @@ import { ResponseItemComponent } from './response-item/response-item.component';
     PostItemComponent,
     BandSnapshotComponent,
     DailyQuestionComponent,
-    CommentBoxComponent
+    CommentBoxComponent,
     ResponseItemComponent
   ],
   imports: [

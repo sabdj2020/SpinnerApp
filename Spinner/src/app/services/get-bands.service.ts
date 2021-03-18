@@ -9,7 +9,7 @@ export class GetBandsService {
 
   constructor(private http:HttpClient) { }
   getBands(){
-    return this.http.get(this.url, {withCredentials: true})
+    return this.http.get(this.url, {withCredentials: true});
   }
 
   

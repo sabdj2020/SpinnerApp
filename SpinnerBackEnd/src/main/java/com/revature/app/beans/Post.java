@@ -14,12 +14,12 @@ public class Post {
 	private String title;
 	@Column(name="post_time")
 	private LocalDateTime postTime;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="post_music",
 		joinColumns=@JoinColumn(name="post_id"),
 		inverseJoinColumns=@JoinColumn(name="music_id"))
 	private Set<Music> songs;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="post_id")
 	private Set<PostComment> comments;
 	private Integer likes;

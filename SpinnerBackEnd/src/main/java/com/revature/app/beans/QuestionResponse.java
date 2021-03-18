@@ -10,7 +10,7 @@ public class QuestionResponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="music_id")
 	private Music song;
 	private Integer likes;

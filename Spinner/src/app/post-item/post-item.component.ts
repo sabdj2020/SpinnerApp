@@ -27,11 +27,11 @@ export class PostItemComponent implements OnInit {
   }
 
   addLike(): void {
-    this.likesServ.addLike(this.post.id).subscribe(response => {this.data=response});
+    this.likesServ.addLike(this.post.id).subscribe(response => {this.post=response});
   }
 
   addLikeComment(comment:any) {
-    this.likesServ.addLikeComment(comment.id).subscribe(response => {this.data=response});
+    this.likesServ.addLikeComment(comment.id).subscribe(response => {this.post.comments});
   }
 
 

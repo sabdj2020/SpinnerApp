@@ -6,6 +6,7 @@ import { Track } from '../models/result-model';
 import { SearchService } from '../services/search.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-daily-question',
   templateUrl: './daily-question.component.html',
@@ -15,6 +16,8 @@ export class DailyQuestionComponent implements OnInit {
   questionOtd: DailyQuestion;
   responseTrack: Track;
   searchTracks: Track[];
+  data: any;
+
 
   constructor(private http: HttpClient, private dqServ: DailyQuestionService, private searchServ: SearchService, private modalServ: NgbModal) { }
 
@@ -51,4 +54,7 @@ export class DailyQuestionComponent implements OnInit {
   openModal(content) {
     this.modalServ.open(content, { centered: true, size: 'lg' });
   }
+
+
+
 }

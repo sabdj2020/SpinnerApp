@@ -13,7 +13,7 @@ public class DailyQuestion {
 	private Integer id;
 	private String question;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="question_id")
 	private Set<QuestionResponse> responses;
 

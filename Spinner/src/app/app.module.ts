@@ -17,6 +17,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DailyQuestionComponent } from './daily-question/daily-question.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { ResponseItemComponent } from './response-item/response-item.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BandViewComponent } from './band-view/band-view.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -33,14 +37,18 @@ import { ResponseItemComponent } from './response-item/response-item.component';
     BandSnapshotComponent,
     DailyQuestionComponent,
     CommentBoxComponent,
-    ResponseItemComponent
+    ResponseItemComponent,
+    DashboardComponent,
+    BandViewComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     NgbModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

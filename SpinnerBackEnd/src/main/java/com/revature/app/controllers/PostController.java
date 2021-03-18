@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.revature.app.beans.Music;
 import com.revature.app.beans.Post;
 import com.revature.app.beans.PostComment;
@@ -24,6 +24,7 @@ import com.revature.app.beans.User;
 import com.revature.app.services.BandService;
 import com.revature.app.services.MusicService;
 import com.revature.app.services.PostService;
+import com.revature.app.services.UserService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
@@ -32,12 +33,14 @@ public class PostController {
 	private final PostService postServ;
 	private final BandService bandServ;
 	private final MusicService musicServ;
+	private final UserService userServ;
 	
 	@Autowired
-	public PostController(PostService p, BandService b, MusicService m) {
+	public PostController(PostService p, BandService b, MusicService m, UserService u) {
 		this.postServ = p;
 		this.bandServ = b;
 		this.musicServ = m;
+		this.userServ = u;
 	}
 	
 	@PostMapping
@@ -93,5 +96,64 @@ public class PostController {
 	@DeleteMapping(path="/comment")
 	public void deleteComment(@RequestBody PostComment comment) {
 		postServ.deleteComment(comment);
+	}
+	
+	@PutMapping(path="/likes/{postId}")
+	public ResponseEntity<Post> addLike(HttpSession session, @PathVariable("postId") int postId) {
+		User loggedUser = (User) session.getAttribute("user");
+		if (loggedUser != null) {
+			Post post = postServ.getPostById(postId);
+			if (post != null) {
+				
+				System.out.println("before calling add like");
+				Post newPost = postServ.addLike(post, loggedUser);
+				
+				System.out.println("after calling add like");
+
+				loggedUser = userServ.getUserById(loggedUser.getId());
+				session.setAttribute("user", loggedUser);
+				System.out.println("new post response" + newPost);
+				System.out.println("users liked posts" + loggedUser);
+
+
+				return ResponseEntity.ok(newPost);
+				
+
+			}
+			
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+		}
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	}
+	
+	
+	@PutMapping(path="/comments/{postCommentId}")
+	public ResponseEntity<PostComment> likeCommentPost(HttpSession session, @PathVariable("postCommentId") int postCommentId) {
+		
+		System.out.println("I ma in the serbebr");
+		User loggedUser = (User) session.getAttribute("user");
+		if (loggedUser != null) {
+			PostComment postComment = postServ.getPostCommentById(postCommentId);
+             if (postComment != null) {
+				
+				System.out.println("before calling add like");
+				PostComment newPostComment = postServ.addPostCommentLike(postComment, loggedUser);
+				
+				System.out.println("after calling add like");
+
+				loggedUser = userServ.getUserById(loggedUser.getId());
+				session.setAttribute("user", loggedUser);
+				System.out.println("new post response" + newPostComment);
+				System.out.println("users liked posts" + loggedUser);
+
+				return ResponseEntity.ok(newPostComment);
+				
+
+			}
+
+ 			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+		}
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+
 	}
 }

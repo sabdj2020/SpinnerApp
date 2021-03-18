@@ -2,7 +2,7 @@
 <mdb-card *ngIf="track">
     <mdb-card-body class="searchItemDivChild">
         <img class="searchResultImg" [src]="track.album.images[0].url" [alt]="track.name"><br><br>
-        <p class="font-weight-bold">{{ track.name }}</p>
-        <p>{{ track.artists[0].name }}</p>
+        <p class="font-weight-bold" style="color:white;">{{ track.name }}</p>
+        <p style="color:#DCDCDC;">{{ track.artists[0].name }}</p>
     </mdb-card-body>
 </mdb-card>

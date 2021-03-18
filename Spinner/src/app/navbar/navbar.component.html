@@ -1,0 +1,20 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple accent-4" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="navbar-brand" routerLink="dashboard">
+            <img src="assets/spinner_logo.png" height="30" class="d-inline-block align-top">
+            Spinner
+        </a>
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="bands">Join Bands</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" (click)="this.userServ.logout()">Logout</a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>

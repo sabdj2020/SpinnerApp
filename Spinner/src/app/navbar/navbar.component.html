@@ -1,22 +1,27 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple accent-4" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg grey lighten-2 fixed-top" [containerInside]="false">
     <mdb-navbar-brand>
-        <a class="navbar-brand" routerLink="dashboard">
-            <img src="assets/spinner_logo.png" height="30" class="d-inline-block align-top">
+        <a class="navbar-brand font-weight-bold" routerLink="dashboard" style="color:#4a148c;">
+            <img src="assets/spinner_logo.png" height="50" class="d-inline-block align-middle">
             Spinner
         </a>
     </mdb-navbar-brand>
     <links>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="bands">Join Bands</a>
-            </li>
+            
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link" routerLink="edit-profile">Edit Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="this.userServ.logout()">Logout</a>
+=======
+                <a class="nav-link font-weight-bold" routerLink="bands" style="color:#4a148c;">Join Bands</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="this.userServ.logout()" style="color:#4a148c;">Logout</a>
+>>>>>>> 57d5b5ecd839f62ed6a5219ef1a72bb06c8b9273
             </li>
         </ul>
     </links>

@@ -1,11 +1,13 @@
-<div class="row">
-    <div class="col-4">
+<div class="row" style="background-color:#4a148c;">
+    <div class="col-3">
+        <br><br><br><br><br>
         <app-daily-question></app-daily-question>
     </div>
-    <div class="col-8">
-        <div class="container">
-            <h2 style="color:#aa00ff;"><strong>My Bands, at a glance</strong></h2>
-        </div>
+    <div class="col-9">
+        <br><br><br><br><br>
+        <div style="margin-left:5%;">
+            <h2 style="color:white;"><strong>My Bands</strong></h2>
+        </div><br>
         <app-band-snapshot [band]="band" *ngFor="let band of this.userServ.loggedInUser.bands"></app-band-snapshot>
     </div>
 </div>

@@ -8,7 +8,9 @@ public interface DailyQuestionService {
 
 	public DailyQuestion getDailyQuestionById(int dayOfMonth);
 
-	QuestionResponse addAnswer(QuestionResponse qr, User u);
+	public QuestionResponse addAnswer(QuestionResponse qr, User u);
+
+	public QuestionResponse addLikeToResp(DailyQuestion dq, int dqrId, User loggedUser);
 	
 	
 

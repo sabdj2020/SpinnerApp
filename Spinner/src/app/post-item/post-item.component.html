@@ -1,21 +1,29 @@
-<mdb-card>
+<mdb-card class="mb-4" style="background-color:#e0e0e0;">
     <mdb-card-body>
         <mdb-card-title>
-            <h4>{{ post.title }}</h4>
-            <p>Posted: {{ post.postTime }}</p>
+            <div class="row">
+                <div class="col-10">
+                    <h4 class="font-weight-bold">{{ post.title }}</h4>
+                    <p>Posted: {{ post.postTime }}</p>
+                </div>
+                <div class="col-2 my-auto mx-auto text-center">
+                    <a (click)="addLike()">
+                        <mdb-icon far icon="heart" size="lg" class="text-dark" aria-hidden="true"></mdb-icon>
+                    </a>
+                    <p style="color:black;"><small>{{ post.likes }}</small></p>
+                </div>
+            </div>
         </mdb-card-title>
         <div class="card-deck">
             <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
         </div><br>
-        <p>{{ post.likes }} Likes</p>
-        <button type="button" (click)="addLike()">like</button>
         <div class="comment-box">
             <table class="comment-table">
                 <tr>
                     <th>Comments</th>
                 </tr>
                 <tr *ngFor="let comment of this.post.comments">
-                    {{ comment.comment }}  <button type="button" (click)="addLikeComment(comment)">like</button>  {{ comment.likes }} likes
+                    {{ comment.comment }} <mdb-icon far icon="heart" size="1x" class="red-text" aria-hidden="true" (click)="addLikeComment(comment)"></mdb-icon>  {{ comment.likes }} 
                 </tr>
             </table>
             <input id="new-comment" class="comment-input" type="text" placeholder="Comment here...">

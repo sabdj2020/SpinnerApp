@@ -2,6 +2,7 @@ package com.revature.app.services;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,25 @@ private UserDAO userDao;
 		// TODO Auto-generated method stub
 		return dqDao.findById(dayOfMonth).get();
 		
+		
+	}
+
+	@Override
+	public QuestionResponse addLikeToResp(DailyQuestion dq, int dqrId, User loggedUser) {
+		// TODO Auto-generated method stub
+		
+		Set<QuestionResponse> dqResponses = dq.getResponses();
+		QuestionResponse res = dqResponses.stream().filter(a -> a.getId() == dqrId).collect(Collectors.toList()).get(0);
+		int numLikes = res.getLikes();
+		numLikes = numLikes+1;
+		res.setLikes(numLikes);
+		loggedUser = userDao.getOne(loggedUser.getId());
+		Set<QuestionResponse> likedQotdResponses = loggedUser.getLikedQotdResponses();
+		likedQotdResponses.add(res);
+		loggedUser.setLikedQotdResponses(likedQotdResponses);
+		userDao.save(loggedUser);
+		qrDao.save(res);
+		return res;
 		
 	}
 	

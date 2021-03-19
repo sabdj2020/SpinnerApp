@@ -1,16 +1,22 @@
-<mdb-card>
+<mdb-card class="mb-4" style="background-color:#e0e0e0;">
     <mdb-card-body>
         <mdb-card-title>
-            <h4>{{ post.title }}</h4>
-            <p>Posted: {{ post.postTime }}</p>
+            <div class="row">
+                <div class="col-10">
+                    <h4 class="font-weight-bold">{{ post.title }}</h4>
+                    <p>Posted: {{ post.postTime }}</p>
+                </div>
+                <div class="col-2 my-auto mx-auto text-center">
+                    <a (click)="addLike()">
+                        <mdb-icon far icon="heart" size="lg" class="text-dark" aria-hidden="true"></mdb-icon>
+                    </a>
+                    <p style="color:black;"><small>{{ post.likes }}</small></p>
+                </div>
+            </div>
         </mdb-card-title>
         <div class="card-deck">
             <app-search-item [track]="track" *ngFor="let track of postTracks"></app-search-item>
         </div><br>
-       
-            <mdb-icon far icon="heart" size="2x" class="red-text" aria-hidden="true" (click)="addLike()"></mdb-icon>
-            {{post.likes }}
-        
         <div class="comment-box">
             <table class="comment-table">
                 <tr>

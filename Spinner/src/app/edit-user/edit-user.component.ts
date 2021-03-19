@@ -14,7 +14,9 @@ import { HttpClient } from '@angular/common/http'
 })
 export class EditUserComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient ,private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
+  constructor(private httpClient: HttpClient ,private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService) { 
+    //this.baseUrl = 'http://localhost:8080/Spinner';
+   }
   
   user: User;
   editForm: FormGroup;
@@ -24,6 +26,8 @@ export class EditUserComponent implements OnInit {
   profilePicData: any;
   base64Data: any;
   convertedImage: any; 
+  public imagePath;
+  public message: string;
 
   title = 'ImageUploaderFrontEnd';
   
@@ -45,6 +49,23 @@ export class EditUserComponent implements OnInit {
       .subscribe( data => {
         this.editForm.setValue(data);
       });
+  }
+
+  preview(files){
+    if(files.length === 0){
+      return;
+    }
+    var mimeType = files[0].type;
+    if(mimeType.match(/image\/*/)== null){
+      this.message= "Only image files are supported!";
+      return;
+    }
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload=(_event)=>{
+      this.imgURL=reader.result;
+    }
   }
 
   onSubmit() {
@@ -69,6 +90,14 @@ export class EditUserComponent implements OnInit {
       this.imgURL = reader.result;
     };
   }
+
+  login(): void {
+    
+  }
+  updateUser(){
+    
+  }
+  
 
   onUpload(){
     const uploadData = new FormData();

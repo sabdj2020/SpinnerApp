@@ -21,6 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BandViewComponent } from './band-view/band-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { EditUserComponent } from './edit-user/edit-user.component'
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditUserService } from './services/edit-user.service';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ResponseItemComponent,
     DashboardComponent,
     BandViewComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     NgbModule,
     MDBBootstrapModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

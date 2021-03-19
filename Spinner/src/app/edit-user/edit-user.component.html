@@ -1,42 +1,41 @@
 
-
-<div class="text-center"> 
-  <h3> Upload Your Profile Picture Below</h3> 
-  <input class="form-control" type="file" (change)="onFileChange($event)"> 
-  <img [src]='imgURL' height="200" *ngIf ="imgURL">
-</div>
-
-<div>
-  <input type="button" (click)="onUpload()" value="upload"> <br>
-</div>
-
-Profile Picture:
-<!--{{profilePicData['pic'] | json}}-->
+<br>
+<br>
+<br>
+<br>
+<br>
 <img [src] = "convertedImage">
-<!--
+
 <div class="col-md-6">
   <h2 class="text-center">Edit User Information</h2>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">    
-    <div class="form-group">
+  <form  >
+    <div class="text-center"> 
+      <h3> Upload Your Profile Picture Below</h3>       
+      Profile Picture:
+      <span *ngIf = "message">{{message}}</span>
+      <input #file type="file" accept="image/*" (change)="preview(file.files)" />
+      <img [src]="imgURL" height="200" *ngIf="imgURL">
+    </div>    
+    <div >
       <label for="username">Username: </label>
-      <input formControlName="username" placeholder="Username" name="username class="form-control" id="username"></input>      
+      <input formControlName="username" placeholder="Username" name="username" class="form-control" id="username" />     
     </div>
 
-    <div class="form-group">
+    <div >
       <label for="passwd">Password: </label>
-      <input formControlName="passwd" placeholder="Password" name="passwd" class="form-control" id="passwd"></input>      
+      <input formControlName="passwd" placeholder="Password" name="passwd" class="form-control" id="passwd" />     
     </div>
 
-    <div class="form-group">
+    <div >
       <label for="firstName">First Name: </label>
-      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName"></input>
+      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName" />
     </div>
 
-    <div class="form-group">
+    <div >
       <label for="lastName">Last Name: </label>
-      <input formControlName="lastName" placeholder="Last Name" name="lastName" class="form-control" id="lastName"></input>
+      <input formControlName="lastName" placeholder="Last Name" name="lastName" class="form-control" id="lastName" />
     </div>
 
-    <button type="button" class="btn btn-success" (click)="update()">Update</button>
+    <button type="button" class="btn btn-success" (click)="updateUser()">Update</button>
   </form>
-</div>-->
+</div>

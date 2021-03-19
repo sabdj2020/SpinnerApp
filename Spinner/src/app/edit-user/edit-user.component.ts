@@ -5,6 +5,7 @@ import {User} from "../models/user.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {first} from "rxjs/operators";
 import { EditUserService } from '../services/edit-user.service'
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-edit-user',
@@ -13,13 +14,19 @@ import { EditUserService } from '../services/edit-user.service'
 })
 export class EditUserComponent implements OnInit {
 
+  constructor(private httpClient: HttpClient ,private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
+  
   user: User;
   editForm: FormGroup;
-  imageLink: string = "";
-  loading: boolean = false;
-  file: File = null;
-  constructor(private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService) { }
+  public selectedFile;
+  public event1;
+  imgURL: any;
+  profilePicData: any;
+  base64Data: any;
+  convertedImage: any; 
 
+  title = 'ImageUploaderFrontEnd';
+  
   ngOnInit() {
     let userId = localStorage.getItem("editUserId");
     if(!userId) {
@@ -52,20 +59,26 @@ export class EditUserComponent implements OnInit {
         });
   }
 
-  onChange(event){
-    this.file = event.target.files[0];
+  public onFileChange(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+
+    let reader = new FileReader();
+    reader.readAsDataURL(event.targget.files[0]);
+    reader.onload = (event2) => {
+      this.imgURL = reader.result;
+    };
   }
 
   onUpload(){
-    this.loading=!this.loading;
-    console.log(this.file);
-    this.editUserService.upload(this.file).subscribe(
-      (event: any) => {
-        if (typeof(event) === 'object'){
-          this.imageLink = event.link;
-          this.loading = false;
-        }
-      }
+    const uploadData = new FormData();
+    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+    this.httpClient.post('http://localhost:4200/edit-profile/upload', uploadData).subscribe(
+      res => {console.log(res);
+      this.profilePicData = res;
+      this.base64Data = this.profilePicData.pic;
+      this.convertedImage = 'data:image/jpeg;base64,'+this.base64Data;},
+      err => console.log('Error Occured during saving: '+ err)
     );
   }
 

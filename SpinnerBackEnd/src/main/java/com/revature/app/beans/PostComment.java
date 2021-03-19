@@ -15,6 +15,7 @@ public class PostComment {
 	@Column(name="comment_time")
 	private LocalDateTime commentTime;
 	private Integer likes;
+	private Integer user_id;
 	
 	public Integer getId() {
 		return id;
@@ -85,5 +86,11 @@ public class PostComment {
 	public String toString() {
 		return "PostComment [id=" + id + ", comment=" + comment + ", commentTime=" + commentTime + ", likes=" + likes
 				+ "]";
+	}
+	public Integer getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 }

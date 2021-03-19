@@ -6,6 +6,8 @@ import { GetTrackService } from '../services/get-track.service';
 import { CommentService } from '../services/comment-service.service';
 import { LikesService } from '../services/likes.service';
 import { PostComment } from '../models/post-comment';
+import { UserService } from '../services/user.service'
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -20,10 +22,23 @@ export class PostItemComponent implements OnInit {
   data:any;
   
 
-  constructor(private getTrackServ: GetTrackService, private commentServ: CommentService, private likesServ: LikesService) { }
+  constructor(private getTrackServ: GetTrackService, private commentServ: CommentService, private likesServ: LikesService, private userServ: UserService) { }
 
-  addComment(): void {
-    this.commentServ.add(this.post.id).subscribe(response => {this.post.comments.push(response)});
+  addComment(newComment: string): void {
+    this.commentServ.add(this.post.id, newComment).subscribe(response => {this.post.comments.push(response)});
+  }
+
+  editComment(comment: PostComment): void {
+
+  }
+
+  deleteComment(comment: PostComment): void {
+    let index = this.post.comments.indexOf(comment);
+    console.log(index);
+    if (index != -1) {
+      this.commentServ.delete(comment).subscribe();
+      this.post.comments.splice(index, 1);
+    }
   }
 
   addLike(): void {

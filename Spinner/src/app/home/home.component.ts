@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { SpotifyService } from '../services/spotify.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,6 @@ import { SpotifyService } from '../services/spotify.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
   constructor(public userServ: UserService, public spotifyServ: SpotifyService) { 
 
   }

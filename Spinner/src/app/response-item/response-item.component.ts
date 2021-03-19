@@ -28,7 +28,7 @@ export class ResponseItemComponent implements OnInit {
   }
 
   addLikeQuestionResp(resp:any): void{
-    this.response.likes++
+    this.response.likes++;
     this.likesServ.addLikeQR(resp.id).subscribe(response => {this.response=response});
   }
 

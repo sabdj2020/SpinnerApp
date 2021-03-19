@@ -19,6 +19,10 @@ export class BandSnapshotComponent implements OnInit {
     this.isPost = false;
     this.postServ.getBandPosts(this.band.id).subscribe(resp => {
       this.posts = resp;
+      this.sortByLikes();
+      for (let post of this.posts) {
+        post.postTime = new Date(post.postTime);
+      }
     });
   }
 

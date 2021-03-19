@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { DailyQuestion } from '../models/daily-question';
 import { DailyQuestionService } from '../services/daily-question.service';
@@ -17,7 +17,8 @@ export class DailyQuestionComponent implements OnInit {
   responseTrack: Track;
   searchTracks: Track[];
   data: any;
-
+  page: number = 1;
+  pageSize: number = 3;
 
   constructor(private http: HttpClient, private dqServ: DailyQuestionService, private searchServ: SearchService, private modalServ: NgbModal) { }
 
@@ -25,6 +26,7 @@ export class DailyQuestionComponent implements OnInit {
     this.dqServ.getDailyQuestion().subscribe(
       resp => {
         this.questionOtd = resp;
+        this.questionOtd.responses.sort((a,b) => a.likes > b.likes ? -1 : a.likes < b.likes ? 1 : 0);
       }
     );
   }

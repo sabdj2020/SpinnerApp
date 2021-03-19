@@ -1,11 +1,11 @@
 <div class="row" style="background-color:#4a148c;">
-    <div class="col-3">
+    <div class="col-3" style="width:auto;">
         <br><br><br><br><br>
         <app-daily-question></app-daily-question>
     </div>
     <div class="col-9">
         <br><br><br><br><br>
-        <div style="margin-left:5%;">
+        <div style="margin-left:8%; width:90%;">
             <h2 style="color:white;"><strong>My Bands</strong></h2>
         </div><br>
         <app-band-snapshot [band]="band" *ngFor="let band of this.userServ.loggedInUser.bands"></app-band-snapshot>

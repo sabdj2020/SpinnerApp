@@ -24,10 +24,10 @@
                 (keyup)="search(searchTerm.value)" (keydown.backspace)="search(searchTerm.value)" #searchTerm>
         </div>
         <div *ngIf="searchTracks" class="card-deck">
-            <app-search-item [track]="track" *ngFor="let track of searchTracks" (click)="addToPost(track); postForm.reset()"></app-search-item>
+            <app-search-item [track]="track" *ngFor="let track of searchTracks" (click)="addToPost(track)"></app-search-item>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" (click)="createPost()">Post</button>
+        <button type="button" (click)="createPost(); postForm.reset()">Post</button>
     </div>
 </ng-template>

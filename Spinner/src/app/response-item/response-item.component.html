@@ -9,7 +9,7 @@
                 <p style="color:#DCDCDC;">{{ track.artists[0].name }}</p>
             </div>
             <div class="col-2 my-auto mx-auto text-center">
-                <mdb-icon far icon="heart" size="lg" class="white-text" aria-hidden="true" (click)="addLikeQuestionResp(response)"></mdb-icon><br>
+                <mdb-icon far icon="heart" size="lg" class="white-text" aria-hidden="true" (click)="addLikeQuestionResp();"></mdb-icon><br>
                 <p style="color:white;"><small>{{ response.likes }}</small></p>
             </div>
         </div>

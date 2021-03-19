@@ -23,7 +23,7 @@
                     <th>Comments</th>
                 </tr>
                 <tr *ngFor="let comment of this.post.comments">
-                    {{ comment.comment }}  <button type="button" class="btn btn-success" (click)="addLikeComment(comment)"> like </button>{{ comment.likes }}likes
+                    {{ comment.comment }} <mdb-icon far icon="heart" size="1x" class="red-text" aria-hidden="true" (click)="addLikeComment(comment)"></mdb-icon>  {{ comment.likes }} 
                 </tr>
             </table>
             <input id="new-comment" class="comment-input" type="text" placeholder="Comment here...">

@@ -6,7 +6,18 @@
                     <h3>{{ band.name }}</h3>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><app-band-post [band]="band"></app-band-post></li>
+                    <li>
+                        <div class="btn-group" mdbDropdown>
+                            <a mdbDropdownToggle type="button" mdbBtn color="dark" class="dropdown-toggle waves-light" mdbWavesEffect>
+                                Sort Posts By:
+                            </a>
+                            <div class="dropdown-menu dropdown-primary">
+                                <a class="dropdown-item" (click)="sortByLikes()">Likes</a>
+                                <a class="dropdown-item" (click)="sortByDate()">Post Time</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><app-band-post [band]="band" (closePost)="newPost()"></app-band-post></li>
                 </ul>
             </div>
         </nav>

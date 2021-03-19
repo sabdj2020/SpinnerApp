@@ -22,11 +22,17 @@ export class BandSnapshotComponent implements OnInit {
     });
   }
 
-  public closePost() {
-    this.isPost = false;
+  public newPost() {
+    this.postServ.getBandPosts(this.band.id).subscribe(resp => {
+      this.posts = resp;
+    });
   }
 
-  public newPost(data) {
-    this.isPost = true;
+  public sortByLikes() {
+    this.posts.sort((a,b) => a.likes > b.likes ? -1 : a.likes < b.likes ? 1 : 0);
+  }
+
+  public sortByDate() {
+    this.posts.sort((a,b) => a.postTime.getTime() > b.postTime.getTime() ? -1 : a.postTime.getTime() < b.postTime.getTime() ? 1 : 0);
   }
 }

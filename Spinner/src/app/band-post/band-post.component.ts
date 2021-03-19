@@ -51,10 +51,8 @@ export class BandPostComponent implements OnInit {
   }
 
   public createPost() {
-    this.band = new Band;
-    this.band.id = 10;
-    this.band.name = "my band";
     this.postServ.createPost(this.postTracks, this.postTitle, this.band);
+    this.modalServ.dismissAll();
     this.closePost.emit();
   }
 

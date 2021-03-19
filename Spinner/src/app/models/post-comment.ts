@@ -3,6 +3,7 @@ export class PostComment {
     comment: string;
     commentTime: Date;
     likes: number;
+    user_id: number;
 
     constructor() {
         this.commentTime = new Date();

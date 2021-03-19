@@ -93,8 +93,10 @@ public class PostController {
 		return ResponseEntity.ok(comment);
 	}
 	
-	@DeleteMapping(path="/comment")
-	public void deleteComment(@RequestBody PostComment comment) {
+	@DeleteMapping(path="/comment/{id}")
+	public void deleteComment(@PathVariable("id") int id) {
+		System.out.println("BAM");
+		PostComment comment = postServ.getPostCommentById(id);
 		postServ.deleteComment(comment);
 	}
 	

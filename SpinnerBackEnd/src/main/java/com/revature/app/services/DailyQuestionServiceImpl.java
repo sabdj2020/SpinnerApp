@@ -75,15 +75,19 @@ private UserDAO userDao;
 		Set<QuestionResponse> dqResponses = dq.getResponses();
 		QuestionResponse res = dqResponses.stream().filter(a -> a.getId() == dqrId).collect(Collectors.toList()).get(0);
 		int numLikes = res.getLikes();
-		numLikes = numLikes+1;
-		res.setLikes(numLikes);
-		loggedUser = userDao.getOne(loggedUser.getId());
-		Set<QuestionResponse> likedQotdResponses = loggedUser.getLikedQotdResponses();
-		likedQotdResponses.add(res);
-		loggedUser.setLikedQotdResponses(likedQotdResponses);
-		userDao.save(loggedUser);
-		qrDao.save(res);
+		if (!loggedUser.getLikedQotdResponses().contains(dqResponses)) {
+			numLikes = numLikes+1;
+			res.setLikes(numLikes);
+			loggedUser = userDao.getOne(loggedUser.getId());
+			Set<QuestionResponse> likedQotdResponses = loggedUser.getLikedQotdResponses();
+			likedQotdResponses.add(res);
+			loggedUser.setLikedQotdResponses(likedQotdResponses);
+			userDao.save(loggedUser);
+			qrDao.save(res);
+			return res;
+		}
 		return res;
+		
 		
 	}
 	

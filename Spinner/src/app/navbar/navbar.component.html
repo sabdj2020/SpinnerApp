@@ -6,8 +6,16 @@
         </a>
     </mdb-navbar-brand>
     <links>
+        <form class="form-inline waves-light" mdbWavesEffect>
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search For Posts By Song"
+                (keyup)="search(searchTerm.value)" (keydown.backspace)="search(searchTerm.value)" #searchTerm>
+            </div>
+        </form>
         <ul class="navbar-nav mr-auto">
-            
+            <li class="nav-item">
+                <a class="nav-link" (click)="searchPosts=[];" style="color:#4a148c;">Close</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -23,3 +31,9 @@
     </links>
     <link>
 </mdb-navbar>
+<div *ngIf="tracks.length > 0" class="card-deck" style="position:absolute; top:4rem; left:10rem; right:37rem; background-color:rgba(224,224,224,0.75); z-index:100">
+    <br><br><br><app-search-item [track]="track" *ngFor="let track of tracks" (click)="searchTrack=track; getPostsBySong(track)"></app-search-item><br><br>
+</div>
+<div *ngIf="searchPosts.length > 0" class="card-deck" style="position:absolute; top:4rem; left:10rem; right:37rem; background-color:rgba(224,224,224,0.75); z-index:100">
+    <br><br><br><app-post-item [post]="post" *ngFor="let post of searchPosts"></app-post-item><br><br>
+</div>

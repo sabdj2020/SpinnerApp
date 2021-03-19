@@ -1,55 +1,59 @@
 <link href="register.component.css" rel="stylesheet" />
-<body>
-<div id="main-div" class="row">
-    <div class="col-7">
-        
-        <h3 style="color:#aa00ff;"><img src="assets/spinner_logo.png" height=180 class="align-center">Spinner</h3>
-        <ul>
-            <li>Discover new music</li>
-            <li>Show off your favorite songs</li>
-            <li>Join communities of like-minded listeners</li>
-        </ul>
 
-    </div>
-    <div id="login-div" class="col-5">
-        <div class="toggleBox">
-            <button type="button" id="to-login" class="toggle-btn" (click)="toggle()" disabled>Login</button>
-            <button type="button" id="to-register" class="toggle-btn" (click)="toggle()">Register</button>
+<body class="v8">
+    <div id="main-div" class="row">
+        <div class="col-7">
+
+            <h3 style="color:#4a148c;"><img src="assets/spinner_logo.png" height=180 class="align-center">Spinner</h3>
+            <ul>
+                <li>Discover new music</li>
+                <li>Show off your favorite songs</li>
+                <li>Join communities of like-minded listeners</li>
+            </ul>
+
         </div>
-        <form name="loginForm" id="loginForm">
-            <div>
-                <label for="username">Username: </label>
-                <input id="username-login" type="text" name="username" placeholder="Username" required="required" /><br>
+        <div id="login-div" class="col-5">
+            <div class="toggleBox">
+                <button type="button" id="to-login" class="toggle-btn" (click)="toggle()" disabled>Login</button>
+                <button type="button" id="to-register" class="toggle-btn" (click)="toggle()">Register</button>
             </div>
-            <div>
-                <label for="passwd">Password: </label>
-                <input id="password-login" type="password" name="password" placeholder="Password"
-                    required="required" /><br>
-            </div>
-            <button id="loginbtn" type="button" class="btn btn-primary btn-block btn-large"
-                (click)="login()">Login</button>
-        </form>
-        <form name="registerForm" id="registerForm" hidden>
-            <div>
-                <label for="firstName">First Name: </label>
-                <input id="firstName" type="text" name="firstName" placeholder="First Name" required="required" /><br>
-            </div>
-            <div>
-                <label for="lastName">Last Name: </label>
-                <input id="lastName" type="text" name="lastName" placeholder="Last Name" required="required" /><br>
-            </div>
-            <div>
-                <label for="username">Username: </label>
-                <input id="username-reg" type="text" name="username" placeholder="Username" required="required" /><br>
-            </div>
-            <div>
-                <label for="passwd">Password: </label>
-                <input id="password-reg" type="password" name="password" placeholder="Password"
-                    required="required" /><br>
-            </div>
-            <button id="registerBtn" type="button" class="btn btn-primary btn-block btn-large"
-                (click)="register()">Submit</button>
-        </form>
+            <form name="loginForm" id="loginForm">
+                <div>
+                    <label for="username">Username: </label>
+                    <input id="username-login" type="text" name="username" placeholder="Username"
+                        required="required" /><br>
+                </div>
+                <div>
+                    <label for="passwd">Password: </label>
+                    <input id="password-login" type="password" name="password" placeholder="Password"
+                        required="required" /><br>
+                </div>
+                <button id="loginbtn" type="button" class="btn btn-primary btn-block btn-large"
+                    (click)="login()">Login</button>
+            </form>
+            <form name="registerForm" id="registerForm" hidden>
+                <div>
+                    <label for="firstName">First Name: </label>
+                    <input id="firstName" type="text" name="firstName" placeholder="First Name"
+                        required="required" /><br>
+                </div>
+                <div>
+                    <label for="lastName">Last Name: </label>
+                    <input id="lastName" type="text" name="lastName" placeholder="Last Name" required="required" /><br>
+                </div>
+                <div>
+                    <label for="username">Username: </label>
+                    <input id="username-reg" type="text" name="username" placeholder="Username"
+                        required="required" /><br>
+                </div>
+                <div>
+                    <label for="passwd">Password: </label>
+                    <input id="password-reg" type="password" name="password" placeholder="Password"
+                        required="required" /><br>
+                </div>
+                <button id="registerBtn" type="button" class="btn btn-primary btn-block btn-large"
+                    (click)="register()">Submit</button>
+            </form>
+        </div>
     </div>
-</div>
 </body>

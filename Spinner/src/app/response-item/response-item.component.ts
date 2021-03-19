@@ -26,10 +26,10 @@ export class ResponseItemComponent implements OnInit {
       }
     );
   }
-
-  addLikeQuestionResp(resp:any): void{
+  
+  addLikeQuestionResp(): void{
     this.response.likes++;
-    this.likesServ.addLikeQR(resp.id).subscribe(response => {this.response=response});
+    this.likesServ.addLikeQR(this.response.id).subscribe(response => {this.response=response});
   }
 
 }

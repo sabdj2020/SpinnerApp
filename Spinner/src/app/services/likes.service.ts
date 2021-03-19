@@ -5,6 +5,7 @@ import { Post } from '../models/post';
 import { PostComment } from '../models/post-comment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { QuestionResponse } from '../models/question-response';
 
 
 
@@ -26,4 +27,8 @@ export class LikesService {
     addLikeComment(postCommentId: number): Observable<PostComment> {
       return this.http.put(this.baseUrl + '/posts/comments/' + postCommentId, {}, {withCredentials: true}).pipe(map(response => response as PostComment));
   }
+    addLikeQR(respId:number): Observable<QuestionResponse> {
+      return this.http.put(this.baseUrl + '/dailyquestions/responses/likes/' + respId, {}, {withCredentials: true}).pipe(map(response => response as QuestionResponse));
+
+    }
 }

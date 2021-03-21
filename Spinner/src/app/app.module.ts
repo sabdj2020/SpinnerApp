@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BandViewComponent } from './band-view/band-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LikedpostsComponent } from './likedposts/likedposts.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ResponseItemComponent,
     DashboardComponent,
     BandViewComponent,
-    NavbarComponent
+    NavbarComponent,
+    LikedpostsComponent
   ],
   imports: [
     BrowserModule,

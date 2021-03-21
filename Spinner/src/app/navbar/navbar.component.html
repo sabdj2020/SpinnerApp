@@ -18,11 +18,15 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+                <a class="nav-link font-weight-bold" routerLink="" style="color:#4a148c;">welcome {{this.userServ.loggedInUser.username}}</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link font-weight-bold" routerLink="likedposts" style="color:#4a148c;">My liked posts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link font-weight-bold" routerLink="bands" style="color:#4a148c;">Join Bands</a>
+                <a class="nav-link font-weight-bold" routerLink="bands" style="color:#4a148c;" routerLinkActive="active">Join Bands</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="this.userServ.logout()" style="color:#4a148c;">Logout</a>

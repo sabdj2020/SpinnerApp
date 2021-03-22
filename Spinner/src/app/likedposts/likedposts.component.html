@@ -1,5 +1,5 @@
-
-<mdb-card class="mb-4" style="background-color:#e0e0e0; margin-top: 80px;" *ngFor= "let post of this.userServ.loggedInUser.likedPosts">
+<div style="margin-top: 80px;">
+<mdb-card class="mb-4" style="background-color:#e0e0e0;" *ngFor= "let post of this.userServ.loggedInUser.likedPosts">
     <mdb-card-body>
         <mdb-card-title>
             <div class="row">
@@ -15,3 +15,6 @@
                 </div>
             </div>
         </mdb-card-title>
+    </mdb-card-body>
+</mdb-card>
+</div>

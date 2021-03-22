@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../models/user.model";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {first} from "rxjs/operators";
+import {FormBuilder, FormGroup, Validators, FormsModule, FormControl} from "@angular/forms";
+import {first, map} from "rxjs/operators";
 import { EditUserService } from '../services/edit-user.service'
 import { HttpClient } from '@angular/common/http'
+import { Byte } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,10 +15,13 @@ import { HttpClient } from '@angular/common/http'
 })
 export class EditUserComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient ,private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService) { 
-    //this.baseUrl = 'http://localhost:8080/Spinner';
-   }
+  constructor(private httpClient: HttpClient ,private editUserService: EditUserService,private formBuilder: FormBuilder,private router: Router, private userService: UserService,private editService: EditUserService) { }
   
+  id: any;
+  name: string;
+  type: string;
+  pic: Byte;
+  user_id: number;
   user: User;
   editForm: FormGroup;
   public selectedFile;
@@ -28,10 +32,13 @@ export class EditUserComponent implements OnInit {
   convertedImage: any; 
   public imagePath;
   public message: string;
+  Repdata;
+  valbutton = "Save";
 
   title = 'ImageUploaderFrontEnd';
   
   ngOnInit() {
+    this.editService.getProfilePic().add(data => this.Repdata = data);
     let userId = localStorage.getItem("editUserId");
     if(!userId) {
       alert("Invalid action.")
@@ -94,10 +101,23 @@ export class EditUserComponent implements OnInit {
   login(): void {
     
   }
-  updateUser(){
-    
+  OnSave = function(profile_pic, isValid: boolean){
+    profile_pic.mode = this.valbutton;
+    this.editService.saveProfilePic(profile_pic).subscribe(data => { alert(data.data);
+      this.ngOnInit();
+    }
+    , error => this.errorMessage = error
+    )
   }
-  
+  edit = function(kk){
+    this.id = kk._id;
+    this.name = kk.name;
+    this.pic = kk.pic;
+    this.valbutton = "Update";
+  }
+  delete = function(id) {
+    this.editService.deleteProfilePic(id).subscribe(data => {alert(data.data); this.ngOnInit();}, error => this.errorMessage = error)
+  }  
 
   onUpload(){
     const uploadData = new FormData();

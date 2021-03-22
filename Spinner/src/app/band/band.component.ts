@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { UrlService } from '../services/url.service';
 
 @Component({
   selector: 'app-band',
@@ -7,10 +8,10 @@ import { HttpClient} from '@angular/common/http';
   styleUrls: ['./band.component.css']
 })
 export class BandComponent implements OnInit {
-  baseUrl: string = 'http://localhost:8080/Spinner';
+  baseUrl: string = this.urlServ.baseUrl + 'Spinner';
   name:String
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient, private urlServ: UrlService ) { }
 
   ngOnInit(): void {
   }

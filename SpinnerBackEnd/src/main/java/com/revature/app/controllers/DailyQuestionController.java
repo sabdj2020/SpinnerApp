@@ -40,7 +40,7 @@ public class DailyQuestionController {
 		this.userServ = u;
 	}
 	
-	@PostMapping(path="/{id}")
+	@PostMapping//(path="/{id}")
 	public ResponseEntity<QuestionResponse> addAnswer(HttpSession session, @RequestBody QuestionResponse qr) {
 		User user = (User) session.getAttribute("user");
 		//User user = userServ.getUserById(id);

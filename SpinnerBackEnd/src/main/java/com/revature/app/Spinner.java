@@ -20,7 +20,7 @@ public class Spinner {
 				registry.addMapping("/**")
 					.allowedMethods("GET", "OPTIONS", "PUT", "POST", "DELETE", "PATCH")
 					.allowedOrigins("http://rev-spinner.s3-website.us-east-2.amazonaws.com")
-					.allowedHeaders("Content-Type", "Authorization")
+					.allowedHeaders("*")
 					.allowCredentials(true);
 			}
 		};

@@ -1310,7 +1310,8 @@ __webpack_require__.r(__webpack_exports__);
 
 class UrlService {
     constructor() {
-        this.baseUrl = 'http://localhost:8080/Spinner';
+        //this.baseUrl = 'http://localhost:8080/Spinner';
+        this.baseUrl = 'http://172.31.5.232:8081/Spinner';
     }
 }
 UrlService.ɵfac = function UrlService_Factory(t) { return new (t || UrlService)(); };

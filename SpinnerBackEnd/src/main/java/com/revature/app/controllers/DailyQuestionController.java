@@ -43,6 +43,7 @@ public class DailyQuestionController {
 	public ResponseEntity<QuestionResponse> addAnswer(@PathVariable("id") int id, @RequestBody QuestionResponse qr) {
 		//User user = (User) session.getAttribute("user");
 		User user = userServ.getUserById(id);
+		System.out.println(user);
 		qr = dqServ.addAnswer(qr, user);
 		return ResponseEntity.ok(qr);
 	}

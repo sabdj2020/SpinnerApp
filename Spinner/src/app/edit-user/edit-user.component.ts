@@ -69,4 +69,8 @@ export class EditUserComponent implements OnInit {
     );
   }
 
+  update() {
+    
+  }
+
 }

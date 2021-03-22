@@ -34,7 +34,7 @@ export class DailyQuestionService {
     response.song = song;
     response.likes = 0;
     response.questionDate = new Date();
-    return this.http.post(this.baseUrl + '/' + this.userServ.loggedInUser.id, response, {withCredentials: true}).pipe(
+    return this.http.post(this.baseUrl, response, {withCredentials: true}).pipe(
       map(resp => 
         resp as QuestionResponse
       )

@@ -1,7 +1,7 @@
-<mdb-card style="width:80%; margin:0 auto; background-color:#aa00ff" *ngFor="let d of data">
+<mdb-card class="mb-4" style="width:80%; margin:0 auto; background-color:#4a148c;" *ngFor="let d of data">
     <mdb-card-body>
         <mdb-card-title>
-            <h4>{{d.name}}</h4>
+            <h4 style="color:white;">{{d.name}}</h4>
         </mdb-card-title>
 
         <button type="button" class="btn btn-dark" (click)="joinBand(d)" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
@@ -9,7 +9,7 @@
 
      <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
-     <div class="modal-dialog modal-notify modal-success" role="document">
+     <div class="modal-dialog modal-notify modal-success purple darken-4" role="document">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
@@ -25,7 +25,7 @@
       <div class="modal-body">
         <div class="text-center">
           <mdb-icon fas icon="check" size="4x" class="mb-3 animated rotateIn"></mdb-icon>
-          <p>Congrads, you just joined the group {{d.name}} </p>
+          <p>You have successfully joined {{d.name}} </p>
         </div>
       </div>
 

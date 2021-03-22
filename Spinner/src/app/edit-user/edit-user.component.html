@@ -21,10 +21,10 @@
 
 <div class="col-md-6">
   <h2 class="text-center">Edit User Information</h2>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">    
+  <form (ngSubmit)="onSubmit()">    
     <div class="form-group">
       <label for="username">Username: </label>
-      <input formControlName="username" placeholder="Username" name="username class="form-control" id="username"/><br>
+      <input formControlName="username" placeholder="Username" name="username" class="form-control" id="username"/><br>
     </div>
 
     <div class="form-group">

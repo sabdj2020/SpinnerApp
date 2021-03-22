@@ -42,7 +42,7 @@ public class DailyQuestionController {
 	@PostMapping
 	public ResponseEntity<QuestionResponse> addAnswer(HttpSession session, @RequestBody QuestionResponse qr) {
 		User user = (User) session.getAttribute("user");
-		System.out.println(user);
+		System.out.println("HEERE BOZO" + user);
 		qr = dqServ.addAnswer(qr, user);
 		return ResponseEntity.ok(qr);
 	}

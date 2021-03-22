@@ -25,7 +25,7 @@ import com.revature.app.services.DailyQuestionService;
 import com.revature.app.services.UserService;
 
 @RestController
-@CrossOrigin(origins="http://rev-spinner.s3-website.us-east-2.amazonaws.com/", allowCredentials="true")
+@CrossOrigin(origins="http://rev-spinner.s3-website.us-east-2.amazonaws.com", allowCredentials="true")
 @RequestMapping(path="/dailyquestions")
 
 public class DailyQuestionController {

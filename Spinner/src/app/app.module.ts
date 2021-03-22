@@ -22,6 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BandViewComponent } from './band-view/band-view.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LikedpostsComponent } from './likedposts/likedposts.component';
+import { PostSongComponent } from './post-song/post-song.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { LikedpostsComponent } from './likedposts/likedposts.component';
     DashboardComponent,
     BandViewComponent,
     NavbarComponent,
-    LikedpostsComponent
+    LikedpostsComponent,
+    PostSongComponent
   ],
   imports: [
     BrowserModule,

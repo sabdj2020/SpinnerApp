@@ -2,6 +2,6 @@
     <input type="text" id="inputSearch" placeholder="Search for a song"
         (keyup)="search(searchTerm.value)" (keydown.backspace)="search(searchTerm.value)" #searchTerm>
 </div>
-<div *ngIf="tracks.length > 0">
-    <app-search-item [track]="track" *ngFor="let track of tracks"></app-search-item>
+<div *ngIf="tracks" class="card-deck">
+    <app-search-item [track]="track" *ngFor="let track of tracks" (click)="outputTrack(track)"></app-search-item>
 </div>

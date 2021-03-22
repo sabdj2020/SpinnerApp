@@ -1,8 +1,13 @@
-
-<mdb-card *ngIf="track">
-    <mdb-card-body class="searchItemDivChild">
-        <img class="searchResultImg" [src]="track.album.images[0].url" [alt]="track.name"><br><br>
-        <p class="font-weight-bold" style="color:white;">{{ track.name }}</p>
-        <p style="color:#DCDCDC;">{{ track.artists[0].name }}</p>
+<mdb-card *ngIf="track" class="mb-2 p-0" style="width:350px; height:150px">
+    <mdb-card-body>
+        <div class="row" style="background-color:rgba(25,20,20,1);">
+            <div class="col-5">
+                <br><img class="searchResultImg" [src]="track.album.images[0].url" [alt]="track.name"><br><br>
+            </div>
+            <div class="col-7">
+                <br><p class="font-weight-bold" style="color:white;">{{ track.name }}</p>
+                <p style="color:#DCDCDC;">{{ track.artists[0].name }}</p>
+            </div>
+        </div>
     </mdb-card-body>
 </mdb-card>

@@ -4,25 +4,22 @@
 
 <ng-template #newPostContent let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Create a new post in {{ band.name }}</h4>
+        <h4 class="modal-title font-weight-bold" style="color:#4a148c;">Create a new post in {{ band.name }}</h4>
         <button type="button" class="close" (click)="modal.close()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
         <form #postForm="ngForm">
-            <h5>Title:</h5>
-            <input type="text" id="postTitle" name="postTitle" [(ngModel)]="postTitle" placeholder="Please enter a title for your post">
-            <h5>Songs:</h5>
+            <h5 class="font-weight-bold">Title:</h5>
+            <input type="text" id="postTitle" name="postTitle" [(ngModel)]="postTitle" placeholder="Please enter a title for your post"><br><br>
+            <h5 class="font-weight-bold">Songs:</h5>
             <div class="card-deck">
                 <app-search-item [track]="track" *ngFor="let track of postTracks" (click)="removeFromPost(track)"></app-search-item>
             </div>
         </form>
         <br>
-        <div>
-            <input type="text" id="inputSearch" placeholder="Search for a song"
-                (keyup)="search(searchTerm.value)" (keydown.backspace)="search(searchTerm.value)" #searchTerm>
-        </div>
+        <app-search (newTrack)="addToPost($event)"></app-search>
         <div *ngIf="searchTracks" class="card-deck">
             <app-search-item [track]="track" *ngFor="let track of searchTracks" (click)="addToPost(track)"></app-search-item>
         </div>

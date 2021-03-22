@@ -19,7 +19,7 @@ export class BandComponent implements OnInit {
     let url= this.baseUrl+"/bands"
     this.http.post(url,{
       name:this.name
-    }).subscribe((result)=>{
+    }, {withCredentials: true}).subscribe((result)=>{
       console.log(result);
     })
   }

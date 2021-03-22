@@ -25,7 +25,8 @@ import com.revature.app.services.DailyQuestionService;
 import com.revature.app.services.UserService;
 
 @RestController
-@CrossOrigin(origins="http://rev-spinner.s3-website.us-east-2.amazonaws.com", allowCredentials="true")
+//@CrossOrigin(origins="http://rev-spinner.s3-website.us-east-2.amazonaws.com", allowCredentials="true")
+@CrossOrigin(origins="http://localhost:4200", allowCredentials="true")
 @RequestMapping(path="/dailyquestions")
 
 public class DailyQuestionController {
@@ -39,10 +40,10 @@ public class DailyQuestionController {
 		this.userServ = u;
 	}
 	
-	@PostMapping(path="/{id}")
-	public ResponseEntity<QuestionResponse> addAnswer(@PathVariable("id") int id, @RequestBody QuestionResponse qr) {
-		//User user = (User) session.getAttribute("user");
-		User user = userServ.getUserById(id);
+	@PostMapping//(path="/{id}")
+	public ResponseEntity<QuestionResponse> addAnswer(HttpSession session, @RequestBody QuestionResponse qr) {
+		User user = (User) session.getAttribute("user");
+		//User user = userServ.getUserById(id);
 		System.out.println(user);
 		qr = dqServ.addAnswer(qr, user);
 		return ResponseEntity.ok(qr);

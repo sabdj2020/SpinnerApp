@@ -820,6 +820,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _url_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./url.service */ "jOSP");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user.service */ "qfBg");
+
 
 
 
@@ -827,9 +829,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class DailyQuestionService {
-    constructor(http, urlServ) {
+    constructor(http, urlServ, userServ) {
         this.http = http;
         this.urlServ = urlServ;
+        this.userServ = userServ;
         this.baseUrl = this.urlServ.baseUrl + '/dailyquestions';
     }
     getDailyQuestion() {
@@ -844,10 +847,10 @@ class DailyQuestionService {
         response.song = song;
         response.likes = 0;
         response.questionDate = new Date();
-        return this.http.post(this.baseUrl, response, { withCredentials: true }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(resp => resp));
+        return this.http.post(this.baseUrl + '/' + this.userServ.loggedInUser.id, response, { withCredentials: true }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(resp => resp));
     }
 }
-DailyQuestionService.ɵfac = function DailyQuestionService_Factory(t) { return new (t || DailyQuestionService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_url_service__WEBPACK_IMPORTED_MODULE_5__["UrlService"])); };
+DailyQuestionService.ɵfac = function DailyQuestionService_Factory(t) { return new (t || DailyQuestionService)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_url_service__WEBPACK_IMPORTED_MODULE_5__["UrlService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinject"](_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"])); };
 DailyQuestionService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjectable"]({ token: DailyQuestionService, factory: DailyQuestionService.ɵfac, providedIn: 'root' });
 
 
@@ -1242,7 +1245,7 @@ class BandComponent {
         let url = this.baseUrl + "/bands";
         this.http.post(url, {
             name: this.name
-        }).subscribe((result) => {
+        }, { withCredentials: true }).subscribe((result) => {
             console.log(result);
         });
     }

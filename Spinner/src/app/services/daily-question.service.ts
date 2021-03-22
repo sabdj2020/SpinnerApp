@@ -7,6 +7,7 @@ import { QuestionResponse } from '../models/question-response';
 import { Track } from '../models/result-model';
 import { Song } from '../models/song';
 import { UrlService } from './url.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ import { UrlService } from './url.service';
 export class DailyQuestionService {
   baseUrl: string;
 
-  constructor(private http: HttpClient, private urlServ: UrlService) { 
+  constructor(private http: HttpClient, private urlServ: UrlService, private userServ: UserService) { 
     this.baseUrl = this.urlServ.baseUrl + '/dailyquestions';
   }
 
@@ -33,7 +34,7 @@ export class DailyQuestionService {
     response.song = song;
     response.likes = 0;
     response.questionDate = new Date();
-    return this.http.post(this.baseUrl, response, {withCredentials: true}).pipe(
+    return this.http.post(this.baseUrl + '/' + this.userServ.loggedInUser.id, response, {withCredentials: true}).pipe(
       map(resp => 
         resp as QuestionResponse
       )

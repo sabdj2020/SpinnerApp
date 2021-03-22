@@ -47,6 +47,7 @@ export class DailyQuestionComponent implements OnInit {
   createAnswer(){
     this.dqServ.createAnswer(this.responseTrack).subscribe(
       resp => {
+        console.log(resp);
         this.questionOtd.responses.push(resp)
       }
     );

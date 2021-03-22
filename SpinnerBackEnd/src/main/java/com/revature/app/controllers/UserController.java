@@ -71,8 +71,8 @@ public class UserController {
 	}
 	
 	@GetMapping
-	public void getUser(HttpSession session) {
+	public ResponseEntity<User> getUser(HttpSession session) {
 		User u = (User) session.getAttribute("user");
-		System.out.println(u);
+		return ResponseEntity.ok(u);
 	}
 }

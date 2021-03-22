@@ -19,7 +19,7 @@ public class Spinner {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 					.allowedMethods("GET", "OPTIONS", "PUT", "POST", "DELETE", "PATCH")
-					.allowedOrigins("http://rev-spinner.s3-website.us-east-2.amazonaws.com", "http://localhost:4200")
+					.allowedOrigins("http://localhost:4200")
 					.allowedHeaders("*")
 					.allowCredentials(true);
 			}
